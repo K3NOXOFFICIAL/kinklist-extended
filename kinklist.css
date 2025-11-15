@@ -92,10 +92,14 @@ td + td { border-left-style:none }
 
 .legend {
 	vertical-align:middle;
-	font-size:14px
+	font-size:14px;
+	display:flex;
+	flex-wrap:wrap;
+	gap:12px; /* space between legend items */
+	align-items:center;
 }
 
-.legend div { display:inline-block }
+.legend div { display:flex; align-items:center; gap:8px; }
 
 .legend .choice {
 	opacity:1;
@@ -215,7 +219,7 @@ button {
 
 @media (max-width: 800px) and (min-width: 598px) {
 	.legend div {
-		width:180px;
+		/* allow flexbox to wrap legend items gracefully */
 		padding-bottom:10px;
 		padding-left:10px
 	}
@@ -243,10 +247,13 @@ button {
 	table { min-width:345px }
 
 	.legend div {
-		width:150px;
+		/* allow flexbox to stack if needed */
 		padding-bottom:10px;
 		padding-left:10px
 	}
+
+	/* On very small screens stack the legend vertically to prevent overlaps */
+	.legend { flex-direction:column; gap:6px; align-items:flex-start }
 
 	#ExportWrapper {
 		position:relative;
