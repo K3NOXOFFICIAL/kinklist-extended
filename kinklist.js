@@ -252,7 +252,7 @@ $(function(){
         },
         drawLegend: function(context){
             context.font = "bold 13px Arial";
-            context.fillStyle = '#000000';
+            context.fillStyle = '#e6e6e6';
 
             var levels = Object.keys(colors);
             var x = context.canvas.width - 15 - (120 * levels.length);
@@ -261,11 +261,11 @@ $(function(){
                 context.arc(x + (120 * i), 17, 8, 0, 2 * Math.PI, false);
                 context.fillStyle = colors[levels[i]];
                 context.fill();
-                context.strokeStyle = 'rgba(0, 0, 0, 0.5)'
+                context.strokeStyle = 'rgba(255, 255, 255, 0.06)'
                 context.lineWidth = 1;
                 context.stroke();
 
-                context.fillStyle = '#000000';
+                context.fillStyle = '#e6e6e6';
                 context.fillText(levels[i], x + 15 + (i * 120), 22);
             }
         },
@@ -283,11 +283,11 @@ $(function(){
             // $canvas.insertBefore($('#InputList'));
 
             var context = canvas.getContext('2d');
-            context.fillStyle = '#FFFFFF';
+            context.fillStyle = '#1b1b1e';
             context.fillRect(0, 0, canvas.width, canvas.height);
 
             context.font = "bold 24px Arial";
-            context.fillStyle = '#000000';
+            context.fillStyle = '#e6e6e6';
             context.fillText('Kinklist 1.1 ' + username, 5, 25);
 
             inputKinks.drawLegend(context);
@@ -295,12 +295,12 @@ $(function(){
         },
         drawCallHandlers: {
             simpleTitle: function(context, drawCall){
-                context.fillStyle = '#000000';
+                context.fillStyle = '#e6e6e6';
                 context.font = "bold 18px Arial";
                 context.fillText(drawCall.data, drawCall.x, drawCall.y + 5);
             },
             titleSubtitle: function(context, drawCall){
-                context.fillStyle = '#000000';
+                context.fillStyle = '#e6e6e6';
                 context.font = "bold 18px Arial";
                 context.fillText(drawCall.data.category, drawCall.x, drawCall.y + 5);
 
@@ -309,7 +309,7 @@ $(function(){
                 context.fillText(fieldsStr, drawCall.x, drawCall.y + 20);
             },
             kinkRow: function(context, drawCall){
-                context.fillStyle = '#000000';
+                context.fillStyle = '#e6e6e6';
                 context.font = "12px Arial";
 
                 var x = drawCall.x + 5 + (drawCall.data.choices.length * 20);
@@ -328,7 +328,7 @@ $(function(){
                     context.arc(x, y, 8, 0, 2 * Math.PI, false);
                     context.fillStyle = color;
                     context.fill();
-                    context.strokeStyle = 'rgba(0, 0, 0, 0.5)'
+                    context.strokeStyle = 'rgba(255, 255, 255, 0.06)'
                     context.lineWidth = 1;
                     context.stroke();
                 }
