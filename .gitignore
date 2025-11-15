@@ -1,1 +1,4 @@
 .DS_Store
+extreme.txt.bak
+light.txt.bak
+.gitignore
