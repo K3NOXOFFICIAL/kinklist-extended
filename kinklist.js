@@ -95,9 +95,20 @@ $(function(){
         createCategory: function(name, fields){
             var $category = $('<div class="kinkCategory">')
                     .addClass('cat-' + strToClass(name))
-                    .data('category', name)
-                    .append($('<h2>')
-                    .text(name));
+                    .data('category', name);
+            var $h2 = $('<h2>').text(name);
+            var $toggle = $('<button class="collapse-toggle" aria-expanded="true" title="Toggle section">▾</button>');
+            $h2.append($toggle);
+            $toggle.on('click', function(e){
+                e.stopPropagation();
+                $category.toggleClass('collapsed');
+                var isCollapsed = $category.hasClass('collapsed');
+                $(this).attr('aria-expanded', !isCollapsed);
+                $(this).text(isCollapsed ? '▸' : '▾');
+            });
+            // allow clicking the heading to toggle
+            $h2.on('click', function(){ $toggle.click(); });
+            $category.append($h2);
 
             var $table = $('<table class="kinkGroup">').data('fields', fields);
             var $thead = $('<thead>').appendTo($table);
@@ -752,6 +763,34 @@ $(function(){
 
     kinks = inputKinks.parseKinksText($('#Kinks').text().trim());
     inputKinks.init();
+
+    /* Dark mode toggle (dark is now the standard setting) */
+    function applyDarkPreference(pref) {
+        if(pref === 'dark') {
+            $(document.body).addClass('dark');
+            $('#DarkModeToggle').attr('aria-pressed', 'true');
+            $('#DarkModeToggle').text('🌙');
+        }
+        else {
+            $(document.body).removeClass('dark');
+            $('#DarkModeToggle').attr('aria-pressed', 'false');
+            $('#DarkModeToggle').text('☀️');
+        }
+    }
+
+    // Default to dark, but respect saved choice
+    var savedPref = localStorage.getItem('kinklist-dark-mode');
+    if(!savedPref) {
+        savedPref = 'dark';
+    }
+    applyDarkPreference(savedPref);
+
+    $('#DarkModeToggle').on('click', function(){
+        var isPressed = $(this).attr('aria-pressed') === 'true';
+        var newPref = isPressed ? 'light' : 'dark';
+        localStorage.setItem('kinklist-dark-mode', newPref);
+        applyDarkPreference(newPref);
+    });
 
     (function(){
         var $popup = $('#InputOverlay');
