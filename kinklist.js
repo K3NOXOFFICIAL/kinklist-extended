@@ -127,7 +127,7 @@ $(function(){
             // exportScale controls how many physical pixels per CSS pixel the exported canvas will use.
             // Set to 1 to keep original behaviour (no extra density). Set to 2 or higher for HiDPI
             // exports. You can override this at runtime with `window.kinklistExportScale`.
-            exportScale: (typeof window !== 'undefined' && typeof window.kinklistExportScale === 'number') ? window.kinklistExportScale : 3,
+            exportScale: (typeof window !== 'undefined' && typeof window.kinklistExportScale === 'number') ? window.kinklistExportScale : 2,
         selectionState: {},
         createCategory: function(name, fields){
             var $category = $('<div class="kinkCategory">')
@@ -403,7 +403,7 @@ $(function(){
 
                 context.font = "bold 24px Arial";
                 context.fillStyle = '#e6e6e6';
-                context.fillText('Kinklist 1.1 ' + username, 5, 25);
+                context.fillText('-Extended 1.2 ' + username, 5, 25);
 
                 inputKinks.drawLegend(context);
                 return { context: context, canvas: canvas };
