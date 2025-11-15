@@ -99,7 +99,9 @@ $(function(){
             var $h2 = $('<h2>').text(name);
             var $toggle = $('<button class="collapse-toggle" aria-expanded="true" title="Toggle section">▾</button>');
             $h2.append($toggle);
-            $toggle.on('click', function(e){
+            $toggle.on('click pointerdown', function(e){
+                if(e.type === 'pointerdown') { this._lastPointer = Date.now(); e.preventDefault(); }
+                if(e.type === 'click' && this._lastPointer && (Date.now() - this._lastPointer < 400)) return;
                 e.stopPropagation();
                 $category.toggleClass('collapsed');
                 var isCollapsed = $category.hasClass('collapsed');
@@ -130,9 +132,17 @@ $(function(){
                         .addClass(level[levels[i]])
                         .data('level', levels[i])
                         .data('levelInt', i)
-                        .attr('title', levels[i])
+                    .attr('title', levels[i])
+                    .attr('aria-label', levels[i])
                         .appendTo($container)
-                        .on('click', function(){
+                        .on('click pointerdown', function(e){
+                            // Prevent duplicate events when pointerdown and click both fire
+                            if(e.type === 'pointerdown') {
+                                this._lastPointer = Date.now();
+                                e.preventDefault();
+                                e.stopPropagation();
+                            }
+                            if(e.type === 'click' && this._lastPointer && (Date.now() - this._lastPointer < 400)) return;
                             $container.find('button').removeClass('selected');
                             $(this).addClass('selected');
                         });
@@ -155,7 +165,9 @@ $(function(){
         createColumns: function(){
             var colClasses = ['100', '50', '33', '25'];
 
-            var numCols = Math.floor((document.body.scrollWidth - 20) / 400);
+            // Compute number of columns based on available width and a minimum column width
+            var minColWidth = 320;
+            var numCols = Math.floor((window.innerWidth - 20) / minColWidth);
             if(!numCols) numCols = 1;
             if(numCols > 4) numCols = 4;
             var colClass = 'col' + colClasses[numCols - 1];
@@ -210,9 +222,10 @@ $(function(){
             inputKinks.placeCategories($categories);
 
             // Make things update hash
-            $('#InputList').find('button.choice').on('click', function(){
+            $('#InputList').find('button.choice').on('click pointerdown', function(e){
+                if(e.type === 'pointerdown') { this._lastPointer = Date.now(); }
+                if(e.type === 'click' && this._lastPointer && (Date.now() - this._lastPointer < 400)) return;
                 if (allowHashUpdate) {
-                    //location.hash = inputKinks.updateHash();
                     debouncedUpdateHash();
                 }
             });
@@ -225,8 +238,8 @@ $(function(){
             inputKinks.parseHash();
 
             // Make export button work
-            $('#Export').on('click', inputKinks.export);
-            $('#URL').on('click', function(){ this.select(); });
+            $('#Export').on('click pointerdown', function(e){ if(e.type === 'pointerdown') e.preventDefault(); inputKinks.export(); });
+            $('#URL').on('click pointerdown', function(e){ if(e.type === 'pointerdown') { e.preventDefault(); this.select(); } else { this.select(); } });
 
             // On resize, redo columns
             (function(){
@@ -709,7 +722,8 @@ $(function(){
         }					
     };
 
-    $('#Edit').on('click', function(){
+    $('#Edit').on('click pointerdown', function(e){
+        if(e.type === 'pointerdown') { e.preventDefault(); }
         var KinksText = inputKinks.inputListToText();
         $('#Kinks').val(KinksText.trim());
         $('#EditOverlay').fadeIn();
@@ -717,20 +731,21 @@ $(function(){
     $('#EditOverlay').on('click', function(){
         $(this).fadeOut();
     });
-    $('#KinksOK').on('click', function(){
-        var selection = inputKinks.saveSelection();
-        try {
-            var kinksText = $('#Kinks').val();
-            kinks = inputKinks.parseKinksText(kinksText);
-            inputKinks.fillInputList();
-        }
-        catch(e){
-            alert('An error occured trying to parse the text entered, please correct it and try again');
-            return;
-        }
-        inputKinks.restoreSavedSelection(selection);
-        $('#EditOverlay').fadeOut();
-    });
+            $('#KinksOK').on('click pointerdown', function(e){
+                if(e.type === 'pointerdown') e.preventDefault();
+                var selection = inputKinks.saveSelection();
+                try{
+                    var kinksText = $('#Kinks').val();
+                    kinks = inputKinks.parseKinksText(kinksText);
+                    inputKinks.fillInputList();
+                }
+                catch(err){
+                    alert('An error occured trying to parse the text entered, please correct it and try again');
+                    return;
+                }
+                inputKinks.restoreSavedSelection(selection);
+                $('#EditOverlay').fadeOut();
+                });
     $('.overlay > *').on('click', function(e){
         e.stopPropagation();
     });
@@ -742,10 +757,12 @@ $(function(){
     });
 
     function showDescriptionButton(description, attachElement) {
-        $('<Button />', { "class": 'KinkDesc',  click: function() {
-                                                    $('#Description').text(description);
-                                                    $('#DescriptionOverlay').fadeIn();} 
-        }).appendTo(attachElement);
+        $('<Button />', { "class": 'KinkDesc'}).appendTo(attachElement).on('click pointerdown', function(e){
+            if(e.type === 'pointerdown') { this._lastPointer = Date.now(); e.preventDefault(); e.stopPropagation(); }
+            if(e.type === 'click' && this._lastPointer && (Date.now() - this._lastPointer < 400)) return;
+            $('#Description').text(description);
+            $('#DescriptionOverlay').fadeIn();
+        });
     }
 
     var stylesheet = document.styleSheets[0];
@@ -867,7 +884,7 @@ $(function(){
                         $btn.addClass('selected');
                     }
 
-                    $btn.on('click', function(){
+                    $btn.on('click pointerdown', function(e){ if(e.type === 'pointerdown') e.preventDefault();
                         $container.find('.big-choice').removeClass('selected');
                         $btn.addClass('selected');
                         kink.value = text;
@@ -912,7 +929,7 @@ $(function(){
                     var $prevKink = inputKinks.inputPopup.generateSecondary(prevKink);
                     $previous.append($prevKink);
                     (function(skip){
-                        $prevKink.on('click', function(){
+                        $prevKink.on('click pointerdown', function(e){ if(e.type === 'pointerdown') e.preventDefault();
                             inputKinks.inputPopup.showPrev(skip);
                         });
                     })(i);
@@ -923,7 +940,7 @@ $(function(){
                     var $nextKink = inputKinks.inputPopup.generateSecondary(nextKink);
                     $next.append($nextKink);
                     (function(skip){
-                        $nextKink.on('click', function(){
+                        $nextKink.on('click pointerdown', function(e){ if(e.type === 'pointerdown') e.preventDefault();
                             inputKinks.inputPopup.showNext(skip);
                         });
                     })(i);
@@ -979,7 +996,7 @@ $(function(){
             var $btn = $options.find('.big-choice').eq(btn);
             $btn.click();
         });
-        $('#StartBtn').on('click', inputKinks.inputPopup.show);
+        $('#StartBtn').on('click pointerdown', function(e){ if(e.type === 'pointerdown') e.preventDefault(); inputKinks.inputPopup.show(); });
         $('#InputCurrent .closePopup, #InputOverlay').on('click', function(){
             $popup.fadeOut();
         });                    
