@@ -45,6 +45,7 @@ let kinkSizes = {
 
 var allowHashUpdate = true;
 var isHashUpdating = false;
+var scrollTimeout = null;
 
 function LoadList() {
     fileToRead = $("#listType").val() + '.txt';
@@ -76,7 +77,13 @@ function debounce(func, wait, immediate) {
 
 // Debounced version of updateHash with a 300ms delay
 const debouncedUpdateHash = debounce(function() {
-    location.hash = inputKinks.updateHash();
+    if (!isHashUpdating && typeof isScrolling !== 'undefined' && !isScrolling) {
+        isHashUpdating = true;
+        location.hash = inputKinks.updateHash();
+        setTimeout(function() {
+            isHashUpdating = false;
+        }, 100);
+    }
 }, 300);
 
 
@@ -199,11 +206,13 @@ $(function(){
             inputKinks.placeCategories($categories);
 
             // Make things update hash
-            $('#InputList').find('button.choice').on('click', function(){
-                if (allowHashUpdate) {
+            $('#InputList').find('button.choice').on('click', function(e){
+                if (allowHashUpdate && !isHashUpdating) {
                     //location.hash = inputKinks.updateHash();
                     debouncedUpdateHash();
                 }
+                e.preventDefault();
+                e.stopPropagation();
             });
         },
         init: function(){
@@ -597,6 +606,19 @@ $(function(){
             this.applySaveToList(values);
             isHashUpdating = false;
         },
+        applySaveToList: function(values){
+            allowHashUpdate = false;
+            var $choices = $('#InputList .choices');
+            for(var i = 0; i < values.length && i < $choices.length; i++){
+                var levelInt = values[i];
+                var $choice = $choices.eq(i);
+                $choice.find('.choice').removeClass('selected');
+                $choice.find('.choice').eq(levelInt).addClass('selected');
+            }
+            setTimeout(function(){
+                allowHashUpdate = true;
+            }, 100);
+        },
         saveSelection: function(){
             var selection = [];
             $('.choice.selected').each(function(){
@@ -639,7 +661,11 @@ $(function(){
                     $(selector).addClass('selected');
                 }
                 allowHashUpdate = true;
+                isHashUpdating = true;
                 location.hash = inputKinks.updateHash();
+                setTimeout(function() {
+                    isHashUpdating = false;
+                }, 100);
             }, 300);
         },
         parseKinksText: function(kinksText){
@@ -752,6 +778,23 @@ $(function(){
 
     kinks = inputKinks.parseKinksText($('#Kinks').text().trim());
     inputKinks.init();
+
+    // Add hashchange event listener to handle browser navigation
+    $(window).on('hashchange', function() {
+        if (!isHashUpdating) {
+            inputKinks.parseHash();
+        }
+    });
+
+    // Prevent hash updates during active scrolling on mobile
+    var isScrolling = false;
+    $(window).on('scroll touchmove', function() {
+        isScrolling = true;
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(function() {
+            isScrolling = false;
+        }, 150);
+    });
 
     (function(){
         var $popup = $('#InputOverlay');
