@@ -1,3 +1,5 @@
+:root{ box-sizing: border-box }
+*, *::before, *::after { box-sizing: inherit }
 .kink-text { vertical-align: middle; font-size:14px; display:inline-block; margin-left:6px; }
 :root {
 	/* Light mode variables */
@@ -29,6 +31,8 @@ body {
 	font-size:14px;
 	background-color:var(--bg);
 	color:var(--text);
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:grayscale;
 }
 body { margin: 0; }
 
@@ -173,11 +177,12 @@ body.dark .legend .choice { box-shadow: 0 1px 4px rgba(255,255,255,0.03); }
 .legend-text { vertical-align:middle }
 
 #ExportWrapper {
-	width:100%;
+	width:auto;
 	height:36px;
 	display:flex;
 	align-items:center;
 	gap:8px;
+	position:relative;
 }
 
 #URL {
@@ -193,12 +198,11 @@ body.dark .legend .choice { box-shadow: 0 1px 4px rgba(255,255,255,0.03); }
 	padding:10px;
 	text-align:center;
 	color:var(--text);
-	font-weight:700
+	font-weight:700;
+	flex: 1 1 auto;
 }
 
 #Export {
-	position:relative;
-	left:auto;
 	box-sizing:border-box;
 	color:var(--text);
 	text-transform:uppercase;
@@ -220,9 +224,8 @@ body.dark .legend .choice { box-shadow: 0 1px 4px rgba(255,255,255,0.03); }
 	font-size:16px;
 	color:#999;
 	background-color:var(--overlay);
-	position:absolute;
-	top:4px;
-	left:220px
+	position:relative; /* make it layout inline */
+	top:0;
 }
 
 #Loading:before {
@@ -255,6 +258,7 @@ body.dark .legend .choice { box-shadow: 0 1px 4px rgba(255,255,255,0.03); }
 		top:-3px;
 		right:46px;
 		border-radius:6px;
+		display:flex; gap:8px;
 	}
 }
 
@@ -267,7 +271,8 @@ body.dark .legend .choice { box-shadow: 0 1px 4px rgba(255,255,255,0.03); }
 	#ExportWrapper {
 		position:absolute;
 		top:-3px;
-		right:46px
+		right:46px;
+		display:flex; gap:8px;
 	}
 }
 
@@ -285,14 +290,9 @@ body.dark .legend .choice { box-shadow: 0 1px 4px rgba(255,255,255,0.03); }
 	}
 
 	#URL {
-		left:155px;
 		width:190px;
 		font-size:10px
 	}
-
-	#Export { left:0 }
-
-	#Loading { left:230px }
 }
 
 @media (max-width: 597px) {
@@ -310,20 +310,15 @@ body.dark .legend .choice { box-shadow: 0 1px 4px rgba(255,255,255,0.03); }
 		position:relative;
 		margin-top:10px;
 		margin-left:0;
-		width:345px
+		width:auto;
 	}
 
 	th.choicesCol { width: calc(var(--touchTarget) + 22px); }
 
 	#URL {
-		left:155px;
 		width:190px;
 		font-size:10px
 	}
-
-	#Export { left:0 }
-
-	#Loading { left:230px }
 }
 
 @media (hover: none) and (pointer: coarse), (max-width: 768px) {
@@ -364,10 +359,13 @@ body.dark .legend .choice { box-shadow: 0 1px 4px rgba(255,255,255,0.03); }
 }
 
 .widthWrapper {
-	max-width:1700px;
+	width:100%;
+	max-width:1400px; /* reasonable maximum so wide monitors still look good */
 	margin-left:auto;
 	margin-right:auto;
-	position:relative
+	padding-left:12px;
+	padding-right:12px;
+	position:relative;
 }
 
 #InputList {
@@ -375,6 +373,7 @@ body.dark .legend .choice { box-shadow: 0 1px 4px rgba(255,255,255,0.03); }
 	gap:12px;
 	flex-wrap:wrap;
 	align-items:flex-start;
+	justify-content:center; /* center columns on larger screens */
 }
 
 #InputList { overflow-x:auto; }
@@ -382,6 +381,44 @@ body.dark .legend .choice { box-shadow: 0 1px 4px rgba(255,255,255,0.03); }
 /* Ensure tables and categories can shrink on small screens and scroll horizontally when necessary */
 .col { min-width: 260px; }
 .kinkCategory { min-width: 240px; }
+/* allow table groups to scroll on small devices */
+.kinkGroup { overflow-x:auto; }
+
+/* Make everything fluid on smaller screens */
+@media (max-width: 900px) {
+	.widthWrapper { padding-left:10px; padding-right:10px; }
+	#InputList { display:block; }
+	.col { box-sizing:border-box; width:100%; min-width:0; padding:0 0 8px 0; }
+	.kinkCategory { margin-left:0; margin-right:0; min-width:unset; }
+	.kinkCategory .kinkGroup { overflow-x:auto; }
+	/* Stack header controls */
+	.topbar{ flex-direction:column; align-items:flex-start; gap:10px }
+	.topbar-right { align-items:flex-start; width:100%; display:flex; flex-wrap:wrap; gap:8px }
+	.topbar-left { align-items:center; }
+	.brand-logo { width:28px; height:28px; }
+	.topbar h1 { font-size:18px; }
+	.legend { justify-content:flex-start }
+}
+
+@media (max-width: 600px) {
+	/* Visual simplification for very small screens */
+	.kink-text { font-size:14px; }
+	.topbar h1 { font-size:18px }
+	.legend .legend-text { display:none }
+	#ExportWrapper { width:auto; }
+	#URL { width: calc(100% - 160px); }
+}
+
+@media (max-width: 480px) {
+	th { font-size:13px; padding:6px 6px }
+	td { font-size:13px; padding:6px; }
+	.kink-text { font-size:13px }
+	.legend { gap:6px }
+}
+
+@media (min-width: 1700px) {
+	.widthWrapper { max-width: 1600px; }
+}
 
 /* Topbar layout for controls */
 .topbar{
@@ -408,6 +445,7 @@ body.dark .brand-logo { box-shadow: 0 2px 8px rgba(255,255,255,0.02); }
 	display:flex;
 	align-items:center;
 	gap:8px;
+	justify-content:flex-end;
 }
 
 /* Top headline */
