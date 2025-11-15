@@ -77,7 +77,7 @@ function debounce(func, wait, immediate) {
 
 // Debounced version of updateHash with a 300ms delay
 const debouncedUpdateHash = debounce(function() {
-    if (!isHashUpdating && typeof isScrolling !== 'undefined' && !isScrolling) {
+    if (!isHashUpdating && typeof window.isScrolling !== 'undefined' && !window.isScrolling) {
         isHashUpdating = true;
         location.hash = inputKinks.updateHash();
         setTimeout(function() {
@@ -129,9 +129,11 @@ $(function(){
                         .attr('title', levels[i])
                         .appendTo($container)
                         .on('click', function(){
-                            $container.find('button').removeClass('selected');
-                            $(this).addClass('selected');
-                        });
+                                    // If a scroll is currently in progress, ignore the click to prevent accidental toggles
+                                    if (typeof window.isScrolling !== 'undefined' && window.isScrolling) return;
+                                    $container.find('button').removeClass('selected');
+                                    $(this).addClass('selected');
+                                });
             }
             return $container;
         },
@@ -184,6 +186,8 @@ $(function(){
             }
         },
         fillInputList: function(){
+            // Save current selections so they are not lost when rebuilding the DOM
+            var savedSelection = inputKinks.saveSelectionIndices();
             $('#InputList').empty();
             inputKinks.createColumns();
 
@@ -205,9 +209,15 @@ $(function(){
             }
             inputKinks.placeCategories($categories);
 
+            // Restore the selections we saved earlier without updating the hash
+            if(savedSelection && savedSelection.length) {
+                inputKinks.restoreSavedSelectionIndices(savedSelection, false);
+            }
+
             // Make things update hash
             $('#InputList').find('button.choice').on('click', function(e){
-                if (allowHashUpdate && !isHashUpdating) {
+                // Ignore clicks while a scroll is in progress to prevent accidental toggles during fast scrolling
+                if (allowHashUpdate && !isHashUpdating && typeof window.isScrolling !== 'undefined' && !window.isScrolling) {
                     //location.hash = inputKinks.updateHash();
                     debouncedUpdateHash();
                 }
@@ -635,6 +645,36 @@ $(function(){
             });
             return selection;
         },
+        saveSelectionIndices: function(){
+            var selection = [];
+            $('#InputList .choices').each(function(){
+                var $selected = $(this).find('.choice.selected');
+                if($selected.length > 0) selection.push($selected.index());
+                else selection.push(-1);
+            });
+            return selection;
+        },
+        restoreSavedSelectionIndices: function(indices, updateHash = true){
+            allowHashUpdate = false;
+            setTimeout(function(){
+                $('#InputList .choices').each(function(i){
+                    var lvl = indices[i];
+                    var $choices = $(this);
+                    $choices.find('.choice').removeClass('selected');
+                    if(typeof lvl === 'number' && lvl >= 0) {
+                        $choices.find('.choice').eq(lvl).addClass('selected');
+                    }
+                });
+                allowHashUpdate = true;
+                if (updateHash) {
+                    isHashUpdating = true;
+                    location.hash = inputKinks.updateHash();
+                    setTimeout(function() {
+                        isHashUpdating = false;
+                    }, 100);
+                }
+            }, 300);
+        },
         inputListToText: function(){
             var KinksText = "";
             var kinkCats = Object.keys(kinks);
@@ -653,7 +693,7 @@ $(function(){
             }
             return KinksText;
         },
-        restoreSavedSelection: function(selection){
+        restoreSavedSelection: function(selection, updateHash = true){
             allowHashUpdate = false;
             setTimeout(function(){
                 for(var i = 0; i < selection.length; i++){
@@ -661,11 +701,13 @@ $(function(){
                     $(selector).addClass('selected');
                 }
                 allowHashUpdate = true;
-                isHashUpdating = true;
-                location.hash = inputKinks.updateHash();
-                setTimeout(function() {
-                    isHashUpdating = false;
-                }, 100);
+                if (updateHash) {
+                    isHashUpdating = true;
+                    location.hash = inputKinks.updateHash();
+                    setTimeout(function() {
+                        isHashUpdating = false;
+                    }, 100);
+                }
             }, 300);
         },
         parseKinksText: function(kinksText){
@@ -781,18 +823,18 @@ $(function(){
 
     // Add hashchange event listener to handle browser navigation
     $(window).on('hashchange', function() {
-        if (!isHashUpdating) {
+        if (!isHashUpdating && typeof isScrolling !== 'undefined' && !isScrolling) {
             inputKinks.parseHash();
         }
     });
 
     // Prevent hash updates during active scrolling on mobile
-    var isScrolling = false;
+    window.isScrolling = false;
     $(window).on('scroll touchmove', function() {
-        isScrolling = true;
+        window.isScrolling = true;
         clearTimeout(scrollTimeout);
         scrollTimeout = setTimeout(function() {
-            isScrolling = false;
+            window.isScrolling = false;
         }, 150);
     });
 

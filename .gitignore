@@ -2,3 +2,7 @@
 extreme.txt.bak
 light.txt.bak
 .gitignore
+node_modules
+package-lock.json
+package.json
+tests/test-hash.js
