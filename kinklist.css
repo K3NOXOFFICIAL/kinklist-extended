@@ -305,6 +305,9 @@ button {
 /* Add panel surface for dark theme */
 .widthWrapper { background-color: var(--surface); padding: 12px; border-radius:6px; border: 1px solid var(--border); }
 
+/* Prevent scroll anchoring causing jumps during dynamic content updates (mobile browsers) */
+#InputList { overflow-anchor: none; }
+
 #Edit {
 	width:18px;
 	height:18px;

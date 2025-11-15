@@ -4,7 +4,7 @@ var log = function(val, base) {
 var strToClass = function(str){
     var className = "";
     str = str.toLowerCase();
-    var validChars = 'abcdefghijklmnopqrstuvwxyz';
+    var validChars = 'abcdefghijklmnopqrstuvwxyz0123456789';
     var newWord = false;
     for(var i = 0; i < str.length; i++) {
         var chr = str[i];
@@ -46,6 +46,20 @@ let kinkSizes = {
 var allowHashUpdate = true;
 var isHashUpdating = false;
 var scrollTimeout = null;
+// Use history.replaceState to update the hash without triggering navigation/scroll
+function setHashWithoutScroll(hash){
+    try {
+        if(window && window.history && window.history.replaceState) {
+            window.history.replaceState(null, '', '#' + hash);
+        }
+        else {
+            location.hash = hash;
+        }
+    }
+    catch(e) {
+        try { location.hash = hash; } catch(e2) {}
+    }
+}
 
 function LoadList() {
     fileToRead = $("#listType").val() + '.txt';
@@ -79,7 +93,7 @@ function debounce(func, wait, immediate) {
 const debouncedUpdateHash = debounce(function() {
     if (!isHashUpdating && typeof window.isScrolling !== 'undefined' && !window.isScrolling) {
         isHashUpdating = true;
-        location.hash = inputKinks.updateHash();
+        setHashWithoutScroll(inputKinks.updateHash());
         setTimeout(function() {
             isHashUpdating = false;
         }, 100);
@@ -99,6 +113,7 @@ $(function(){
     
     inputKinks = {
         $columns: [],
+        selectionState: {},
         createCategory: function(name, fields){
             var $category = $('<div class="kinkCategory">')
                     .addClass('cat-' + strToClass(name))
@@ -133,6 +148,18 @@ $(function(){
                                     if (typeof window.isScrolling !== 'undefined' && window.isScrolling) return;
                                     $container.find('button').removeClass('selected');
                                     $(this).addClass('selected');
+                                    // Update selection state map based on category/kink/field
+                                    var $choices = $(this).closest('.choices');
+                                    var $kinkRow = $choices.closest('tr.kinkRow');
+                                    var $cat = $choices.closest('.kinkCategory');
+                                    if($kinkRow.length && $cat.length) {
+                                        var category = $cat.data('category');
+                                        var kink = $kinkRow.data('kink');
+                                        var field = $choices.data('field');
+                                        var levelInt = $(this).data('levelInt');
+                                        var key = strToClass(category) + '|' + strToClass(kink) + '|' + strToClass(field);
+                                        inputKinks.selectionState[key] = levelInt;
+                                    }
                                 });
             }
             return $container;
@@ -187,7 +214,7 @@ $(function(){
         },
         fillInputList: function(){
             // Save current selections so they are not lost when rebuilding the DOM
-            var savedSelection = inputKinks.saveSelectionIndices();
+            var savedSelection = inputKinks.saveSelectionKeys();
             $('#InputList').empty();
             inputKinks.createColumns();
 
@@ -211,7 +238,7 @@ $(function(){
 
             // Restore the selections we saved earlier without updating the hash
             if(savedSelection && savedSelection.length) {
-                inputKinks.restoreSavedSelectionIndices(savedSelection, false);
+                inputKinks.restoreSavedSelectionFromKeys(savedSelection, false);
             }
 
             // Make things update hash
@@ -228,6 +255,7 @@ $(function(){
         init: function(){
             // Set up DOM
             inputKinks.fillInputList();
+            inputKinks.updateSelectionStateFromDOM();
 
             // Read hash
             inputKinks.parseHash();
@@ -587,8 +615,7 @@ $(function(){
                 if(!lvlInt) lvlInt = 0;
                 hashValues.push(lvlInt);
             });
-            console.log("updateHash count:", hashValues.length); // Logs the number of hash values
-            console.log("object...", Object.keys(colors).length); // Logs the hash values object
+            // Removed console logging to reduce console noise in production
             return inputKinks.encode(Object.keys(colors).length, hashValues);
         },
         parseHash: function(){
@@ -627,6 +654,7 @@ $(function(){
             }
             setTimeout(function(){
                 allowHashUpdate = true;
+                inputKinks.updateSelectionStateFromDOM();
             }, 100);
         },
         saveSelection: function(){
@@ -654,6 +682,69 @@ $(function(){
             });
             return selection;
         },
+        saveSelectionKeys: function(){
+            var selection = [];
+            $('#InputList .choices').each(function(){
+                var $choices = $(this);
+                var $kinkRow = $choices.closest('tr.kinkRow');
+                var $cat = $choices.closest('.kinkCategory');
+                if(!$kinkRow.length || !$cat.length) {
+                    // can't determine key for this entry
+                    selection.push(null);
+                    return;
+                }
+                var category = $cat.data('category');
+                var kink = $kinkRow.data('kink');
+                var field = $choices.data('field');
+                var key = strToClass(category) + '|' + strToClass(kink) + '|' + strToClass(field);
+                var lvl = (typeof inputKinks.selectionState[key] === 'number') ? inputKinks.selectionState[key] : -1;
+                selection.push({ category: category, kink: kink, field: field, levelIndex: lvl });
+            });
+            return selection;
+        },
+        updateSelectionStateFromDOM: function(){
+            inputKinks.selectionState = {};
+            $('#InputList .choices').each(function(){
+                var $choices = $(this);
+                var $kinkRow = $choices.closest('tr.kinkRow');
+                var $cat = $choices.closest('.kinkCategory');
+                if(!$kinkRow.length || !$cat.length) return;
+                var category = $cat.data('category');
+                var kink = $kinkRow.data('kink');
+                var field = $choices.data('field');
+                var $selected = $choices.find('.choice.selected');
+                var lvl = ($selected.length > 0) ? $selected.index() : -1;
+                var key = strToClass(category) + '|' + strToClass(kink) + '|' + strToClass(field);
+                inputKinks.selectionState[key] = lvl;
+            });
+        },
+        restoreSavedSelectionFromKeys: function(keys, updateHash = true){
+            allowHashUpdate = false;
+            setTimeout(function(){
+                for(var i = 0; i < keys.length; i++){
+                    var obj = keys[i];
+                    if(!obj) continue;
+                    var selector = '.cat-' + strToClass(obj.category) + ' .kink-' + strToClass(obj.kink) + ' .choice-' + strToClass(obj.field);
+                    // debugging: selector being restored
+                    var $choices = $(selector);
+                    if($choices.length === 0) continue;
+                    $choices.find('.choice').removeClass('selected');
+                    if(typeof obj.levelIndex === 'number' && obj.levelIndex >= 0) {
+                        $choices.find('.choice').eq(obj.levelIndex).addClass('selected');
+                    }
+                }
+                allowHashUpdate = true;
+                if (updateHash) {
+                    isHashUpdating = true;
+                    setHashWithoutScroll(inputKinks.updateHash());
+                    setTimeout(function() {
+                        isHashUpdating = false;
+                    }, 100);
+                }
+                // Update selectionState to match restored DOM selections
+                inputKinks.updateSelectionStateFromDOM();
+            }, 300);
+        },
         restoreSavedSelectionIndices: function(indices, updateHash = true){
             allowHashUpdate = false;
             setTimeout(function(){
@@ -668,11 +759,12 @@ $(function(){
                 allowHashUpdate = true;
                 if (updateHash) {
                     isHashUpdating = true;
-                    location.hash = inputKinks.updateHash();
+                    setHashWithoutScroll(inputKinks.updateHash());
                     setTimeout(function() {
                         isHashUpdating = false;
                     }, 100);
                 }
+                inputKinks.updateSelectionStateFromDOM();
             }, 300);
         },
         inputListToText: function(){
@@ -703,11 +795,12 @@ $(function(){
                 allowHashUpdate = true;
                 if (updateHash) {
                     isHashUpdating = true;
-                    location.hash = inputKinks.updateHash();
+                    setHashWithoutScroll(inputKinks.updateHash());
                     setTimeout(function() {
                         isHashUpdating = false;
                     }, 100);
                 }
+                inputKinks.updateSelectionStateFromDOM();
             }, 300);
         },
         parseKinksText: function(kinksText){
