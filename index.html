@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>Kinklist</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+        <meta name="description" content="A personal rating and organization tool for your preferences">
+        <meta name="theme-color" content="#0b0f12">
         <script
             src="https://code.jquery.com/jquery-3.4.1.min.js"
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -51,7 +53,7 @@
                             <div><span data-color="#ff5964" class="choice limit"></span> <span class="legend-text">Limit</span></div>
                         </div>
                         <div id="ExportWrapper" class="export-wrapper">
-                            <input type="text" id="URL" class="input" placeholder="Shared link" aria-label="Exported image url">
+                            <input type="text" id="URL" class="input" placeholder="Shared link" aria-label="Exported image url" readonly>
                             <button id="Export" class="btn btn-primary" type="button">Export</button>
                             <div id="Loading" class="loading" aria-hidden="true">Uploading…</div>
                         </div>
@@ -73,7 +75,7 @@
                 <div id="InputCurrent">
                     <h2 id="InputCategory"></h2>
                     <h3 id="InputField"></h3>
-                    <button class="closePopup" type="button">×</button>
+                    <button class="closePopup" type="button" aria-label="Close">×</button>
                     <div id="InputValues"></div>
                 </div>
                 <div id="InputNext"></div>
