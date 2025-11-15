@@ -16,6 +16,56 @@
 ? Expresses an interest in butts that are particularly small.
 * Big Butts
 ? Expresses an interest in butts that are particularly large.
+* Cut Cocks
+? Expresses an interest in circumcised penises, or penises with very little foreskin.
+* Uncut Cocks
+? Expresses an interest in penises that have not been circumsized and have a large amount of foreskin.
+* Glasses
+? A preference for characters who wear glasses.
+* Muscular Partners
+? Expresses an interest in characters that are powerfully-built and/or athletic.
+* Very Muscular Partners
+? Expresses an interest in characters that are exceptionally muscular or toned.
+* Nonsexual Piercings
+? Engaging in sex with a character who has piercings on parts of his or her body that are not of a sexual nature.
+* Pubic Hair
+? Expresses an interest in pubic hair, possibly in large or excessive quantities.
+* Twinks
+? Expresses an interest in male characters that are feminine and subtly defined.
+* Twins / Clones
+? Expresses an interest in two or more characters who are identical, often siblings.
+* Very Fat Partners
+? Expresses an interest in characters that are exceptionally overweight or obese.
+* Very Lithe Characters
+? Expresses an interest in characters that are exceptionally thin or lank.
+* Voluptuousness
+? Expresses an interest in characters with wider than average hips and large buttocks.
+* Hirsute
+? Expresses an interest in characters with excessive facial or body hair.
+* Older Characters
+? Expresses an interest in characters that are significantly older or mature.
+* Femboys
+? Effeminate, girly males.
+* Hyper Breasts
+? Exaggeratedly or impossibly large breasts.
+* Hyper Asses
+? Exaggeratedly or impossibly large buttocks.
+* Hyper Cocks
+? Exaggeratedly or impossibly large penises.
+* Hyper Balls
+? Exaggeratedly or impossibly large testicles.
+* Hyper Vaginas
+? Exaggeratedly or impossibly large or deep vaginas.
+* Hyper Muscle
+? Exaggeratedly or impossibly large muscles.
+* Hyper-Voluptuous
+? Characters with exaggeratedly feminine features.
+* Taller Characters
+? Characters that are noticeably taller than average.
+* Shorter Characters
+? Characters that are noticeably shorter than average.
+* Younger Characters
+? Interest in younger-appearing characters.
 
 #Clothing
 (Self, Partner)
@@ -35,15 +85,32 @@
 ? Expresses an interest in the inclusion of uniforms or costumes in the sexual context of an RP, or an interest in characters wearing such.
 * Cross-dressing
 ? Engaging in an RP where one or more characters dress in the clothes of the gender opposite to their own.
+* Fishnet Stockings
+? Expresses an interest in wearing fishnet-patterned stockings or legwear.
+* Underwear
+? An affinity for underwear, either being worn or by itself; often involves stimulation from the scent or tactility.
+* Underwear Bulges
+? An interest in seeing or being seen through tight underwear that accentuates the genitals.
+* Fursuits
+? Engaging in an RP while wearing a full-body fursuit or mascot costume.
+* Murrsuits
+? A fursuit designed and used primarily for sexual or intimate roleplay purposes.
+* Masks
+? The use of masks (surgical, BDSM, gas masks, etc) to conceal the wearer's identity.
+* Socks / Stockings
+? Expresses an interest in the inclusion of socks and/or stockings in sexual contexts.
 
 #Roles & Groupings
 (Self, Partner)
 * as Male
 * as Female
 * as Femboy
+? Effeminate, girly males.
 * as Futa
 * as MtF trans
 * as FtM trans
+* as Trans Males
+? Male characters that are transgender.
 * as male & female
 * as multiple males
 * as multiple females
@@ -52,6 +119,8 @@
 * as Submissive
 * as Switch
 * as Celebrity
+* as Nonbinary
+? Characters that do not identify as male or female.
 
 #General
 (Giving, Receiving)
@@ -321,3 +390,883 @@
 * Slow Replies (2~8 hours)
 * Glacial Replies (8-24 hours)
 * Occasional Replies (24+ hours)
+
+#Species & Characteristics
+(General)
+* Canines
+? Canine or dog-like characters, including wolves and similar species.
+* Felines
+? Feline or cat-like characters, including tigers and similar species.
+* Avians
+? Bird-like or avian characters.
+* Dragons
+? Draconic or dragon-like characters.
+* Demons
+? Demonic or infernal beings.
+* Angels
+? Angelic or heavenly beings.
+* Divinities
+? Gods or divine beings.
+* Fae
+? Fairy or fae-like beings.
+* Elves
+? Elf or elf-like humanoids.
+* Kemonomimi
+? Characters with animal ears or tails but otherwise humanoid appearance.
+* Vampires
+? Vampire or vampire-like characters.
+* Lycanthropes
+? Characters that can transform into animal forms or are werewolves.
+* Humanoids
+? Human-like characters that may not be entirely human.
+* Predator Species
+? Species that are naturally predatory or carnivorous.
+* Prey Species
+? Species that are naturally preyed upon.
+* Toons
+? Cartoon-like or exaggerated characters.
+* Vulpines
+? Fox-like or canine-like characters.
+* Ursines
+? Bear-like characters.
+* Procyonidae
+? Raccoon or similar characters.
+* Lapines
+? Rabbit or hare-like characters.
+* Bovines
+? Cattle or cow-like characters.
+* Caprinae
+? Goat or sheep-like characters.
+* Cervines
+? Deer or similar horned characters.
+* Equines
+? Horse or equine-like characters.
+* Marine Mammals
+? Seal, whale, dolphin or similar water-dwelling mammals.
+* Bats
+? Bat-like characters.
+* Insects / Arachnids
+? Insect or spider-like characters.
+* Reptiles
+? Reptilian characters.
+* Amphibians
+? Frog, salamander or similar amphibious characters.
+* Fish / Sharks
+? Fish or shark-like characters.
+* Mollusca
+? Octopus, squid or similar characters.
+* Mammals
+? General mammalian characters.
+* Marsupials
+? Kangaroo, koala or similar marsupials.
+* Monkeys / Primates
+? Ape, monkey or primate characters.
+* Rodents / Murines
+? Rat, mouse or similar rodent characters.
+* Undead
+? Zombie, skeleton or undead characters.
+* Dinosaurs
+? Prehistoric dinosaur-like characters.
+* Mephitis
+? Skunk-like or similar characters.
+* Mustelidae
+? Weasel, otter, badger or similar characters.
+* Hyaenidae
+? Hyena-like characters.
+* Xeno / Alien
+? Alien or extraterrestrial characters.
+* Robots, Cyborgs, Androids
+? Mechanical, robotic, or cyborg entities.
+* Moogles
+? Final Fantasy moogle-like creatures.
+* Orcs
+? Orc characters.
+* Superheroes / Villains
+? Characters with superhuman abilities.
+* Driders
+? Spider-human hybrid characters.
+* Lamia / Naga
+? Snake-human hybrid characters.
+* Taurs
+? Centaur-like characters with animal lower body.
+
+#Sexuality & Preferences
+(General)
+* Consensual
+? Sexual interactions that are fully consenting by free will.
+* Affection
+? Displaying and expressing love or strong affection.
+* Cuddling
+? Characters showing affection through hugging, snuggling, and physical closeness.
+* Private Roleplay
+? A preference for engaging in roleplay in private settings.
+* Dating
+? Engaging in romantic non-sexual activities with a partner.
+* Nonsexual Roleplay
+? Engaging in roleplay that does not involve sexual content.
+* Instant Hookups
+? A preference for quick, immediately sexual interactions.
+* Informality
+? A preference for casual, informal interaction.
+* Slice of Life
+? Roleplay involving everyday, mundane activities.
+* Fantasy
+? Roleplay set in fantasy worlds with magic.
+* Sci-fi
+? Roleplay set in science fiction settings.
+* Modern Settings
+? Roleplay set in contemporary times.
+* Realism
+? A preference for roleplay following realistic scenarios.
+* Story Driven
+? Roleplay with significant plot or narrative.
+* Sex Driven
+? Roleplay focused primarily on sexual content.
+* Original Characters
+? A preference for original, non-canon characters.
+* Canon Characters
+? A preference for existing franchise characters.
+* Approaching IC
+? Initiating roleplay through in-character approaches.
+* Approaching OOC
+? Initiating roleplay through out-of-character communication.
+* Inexperienced Partners
+? A preference for inexperienced or new partners.
+* Very Experienced Partners
+? A preference for highly experienced partners.
+* Drawn Image References
+? Using drawn illustrations as reference material.
+* Photograph References
+? Using photographs as reference material.
+* Intelligent Characters
+? A preference for characters that demonstrate high intelligence.
+* Unintelligent Characters
+? A preference for characters with lower intelligence.
+
+#Oral & Genital Play
+(General)
+* Kissing
+? Expressing an interest in kissing or being kissed by another character.
+* Licking
+? The act of one character licking another for sexual pleasure.
+* Dirty Talking
+? Speaking in an explicit manner to provoke sexual stimulation.
+* Paw Play
+? Engaging in sexual activities involving paws or paw-like appendages.
+* Crotch Sniffing
+? The act of receiving pleasure from inhaling the scent of the crotch.
+* Heat / Rut
+? Roleplay involving animals in their mating season with heightened sexual arousal.
+* Navel Play
+? Engaging in sexual acts involving pleasure from the bellybutton.
+* Fingering (Vaginal)
+? Sexual stimulation of the vagina using fingers.
+* Fingering (Anal)
+? Sexual stimulation of the anus using fingers.
+* Fingers in Mouth
+? Placing fingers in another's mouth for sexual stimulation.
+* Handplay
+? Sexual play involving the hands and fingers.
+* Foreplay
+? Sexual activity prior to penetration, intended to arouse.
+* Strip Tease
+? The act of dramatically removing clothing as seduction.
+* Hotdogging
+? Placing a penis between ass cheeks and sliding for stimulation.
+* Intercrural Sex
+? Sexual activity with the penis stimulated by thrusting between thighs.
+* Titfucking
+? Placing a penis between breasts and thrusting for stimulation.
+* Footjobs
+? Sexual stimulation of genitals using the feet or toes.
+* Knotted Cocks
+? Sexual interest in or play involving knotted penises.
+* Sheaths
+? Interest in or sexual play involving animal-like genital sheaths.
+* Sheath Play
+? Sexual activities involving sheaths in furry roleplay.
+* Docking
+? Phallic insertion into another person's sheath and/or foreskin.
+* Cock Warming
+? Placing genitalia inside a partner's orifice without thrusting.
+* Oral Sex (Giving)
+? Providing oral stimulation to a partner's genitals.
+* Oral Sex (Receiving)
+? Receiving oral stimulation to the genitals.
+* Frotting
+? Two penises being ground against each other for gratification.
+* Oral Virginity
+? A character that has never performed oral sex performs such acts.
+* Vaginal Virginity
+? A character that has never engaged in vaginal sex.
+* Anal Virginity
+? Anal sex with a character who has never been anally penetrated.
+* Face-Fucking
+? Penetrating the mouth with similar technique as fucking a vagina or anus.
+* Throat Penetration
+? Deep penetration into the mouth reaching the back of throat.
+* Masturbation
+? The act of stimulating oneself sexually.
+* Handjob / Fingering
+? Sexual stimulation by direct, physical contact of the hands or fingers to the genitals.
+
+#Anal & Penetration
+(General)
+* Penetration
+? Sexual activity involving insertion of objects or body parts into body orifices.
+* Creampie
+? Orgasming into an exposed orifice.
+* Vaginal Penetration
+? Penis or object being inserted into the vagina.
+* Anal Penetration
+? Penis or object being inserted into the anus.
+* Multiple Penetration
+? Multiple insertions happening simultaneously in same orifice.
+* Air-tight
+? All orifices being penetrated simultaneously during group sex.
+* Sloppy Seconds
+? Character receives sex after being came in without cleanup.
+* Pussy-to-Mouth
+? Transfer of penis from vagina to mouth without cleanup.
+* Cock-to-Ass
+? Transfer of penis from one hole to another for stimulation.
+* All the Way Through
+? Penetration so deep it comes out the other side.
+* Stomach Bulging
+? Character's stomach bulging from insertion or food.
+* Impalement
+? Being penetrated from one orifice extending through another.
+
+#Cum Play & Bodily Fluids
+(General)
+* Bukkaake
+? Multiple people ejaculating on single recipient.
+* Hard Cum Facials
+? Facials involving forceful ejaculation.
+* Soft Cum Facials
+? Facials involving gentle ejaculation.
+* Cum From Mouth/Nose
+? Cum leaking from mouth and nose due to force.
+* Cum Vomit
+? Expelling cum through mouth.
+* Cum Milking
+? Collecting or milking semen from a male.
+* Cum Marking
+? Cumming onto another to mark territory.
+* Cum Bath
+? Being treated with cum like bathing in it.
+* Cum on Clothes
+? Ejaculating onto or wearing clothes with cum.
+* Cum Enemas
+? Enema using semen as the liquid.
+* Realistic Cum
+? Realistic volume and quality of sexual fluid.
+* Premature Ejaculation
+? Partner reaching orgasm very quickly.
+* Snowballing
+? Receiving cum into mouth transmitted from another.
+* Excessive Precum
+? Character producing larger than average amounts.
+* Shooting Precum
+? Character spurting precum with force.
+* Heavily Excessive Precum
+? Exceptionally large volumes of precum.
+* Excessive Semen
+? Character producing larger than average amounts.
+* Heavily Excessive Semen
+? Exceptionally large volumes of semen.
+* Unusual Semen
+? Semen with unusual properties.
+* Thick/Sticky Cum
+? Particularly thick or viscous semen.
+* Menses
+? Female menstruation applied to sexual context.
+* Musk
+? Characters that are exceptionally musky.
+* Natural Musk
+? Interest in natural body scent and pheromones.
+* Extreme Musk
+? Extreme or overpowering bodily scent.
+* Unwashed Musk
+? Characters with poor hygiene and strong musk.
+* Smegma
+? Interest in sexual scenarios involving smegma.
+* Sweat
+? Receiving gratification from appearance of sweat.
+* Saliva
+? Roleplay prominently including saliva.
+* Lactation
+? Production of milk during sexual activity.
+* Hyper Lactation
+? Exaggeratedly large milk production.
+* Messy
+? Sexual scenes involving large amounts of liquids.
+* Food Play
+? Incorporating food into sexual context.
+* Felching
+? Orally ingesting semen from partner's orifice.
+* Hyper Watersports
+? Producing unnatural amounts of urine.
+* Hyper Scat
+? Producing unnatural amounts of feces.
+* Wetting
+? Urinating in clothes.
+* Soiling
+? Fecal soiling in clothes.
+* Swallowing Feces
+? Orally consuming fecal matter.
+* Swallowing Urine
+? Orally consuming urine.
+* Swallowing Vomit
+? Orally consuming vomit.
+* Swallowing Blood
+? Orally consuming blood.
+* Farting
+? Farting during or as part of sexual interaction.
+* Queefing
+? Sounds of air expulsion via intercourse.
+* Onomatopoeia
+? Emphasis on exaggerated descriptions of sexual noises.
+* Vomiting
+? The act of vomiting or including vomit in sexual context.
+* Marking
+? Urinating on another to mark with territorial scent.
+* Piss Enemas
+? Enema using urine as the liquid.
+* Scat Torture
+? Using fecal matter to abuse another character.
+* Blood
+? Pertains to inclusion of blood in sexual context.
+* Watersports
+? Pertains to inclusion of urine in sexual context.
+* Scat
+? Pertains to inclusion of fecal matter in sexual context.
+
+#Intensity, Size & Growth
+(General)
+* Hyper Muscle Growth
+? The process of muscles growing to exaggerated sizes.
+* Hyper Fat
+? Exaggeratedly or impossibly obese characters.
+* Macrophilia
+? Interest in characters that are incredibly and unrealistically tall.
+* Micro / Macro
+? Extreme size differences between characters.
+* Shrinking
+? Reducing in body size.
+* Shrinking (Micro)
+? Reducing to extremely small proportions.
+* Size Differences (1-3 Feet)
+? Size difference of 1 to 3 feet between characters.
+* Size Differences (Micro / Macro)
+? Extreme size differences involving micro and macro.
+* Smaller Characters
+? Interest in characters that are shorter or smaller.
+* Small Dom / Big Sub
+? Smaller character dominates a larger character.
+* Breast Growth
+? Female breasts growing in size to fantastical proportions.
+* Ass Growth
+? A character's buttocks growing in size.
+* Cock/Ball Growth
+? Male genitals growing in size to fantastical proportions.
+* Muscle Growth
+? Muscles increasing in size by magical or medicinal means.
+* Weight Gain (Light / Medium)
+? Character gaining weight.
+* Weight Gain (Heavy / Extreme)
+? Excessive weight gain.
+* Weight Loss
+? Character becoming thinner or losing weight.
+* Growth
+? Growing in body size by magical or fantastic means.
+* Forced Growth
+? Character forced to endure body growth against their will.
+* Microphilia
+? Interest in characters that are impossibly small.
+* Macro Breasts
+? Breasts of macro-sized proportions.
+* Macro Cocks
+? Penises of macro-sized proportions.
+* Macro Asses
+? Buttocks of macro-sized proportions.
+* Mega Macro
+? Characters or body parts of impossibly large proportions.
+* Popping
+? Causing anatomy to explode by inflation.
+* Inflation (Heavy / Extreme)
+? Character filled with impossible amounts of substance.
+* Inflation (Light / Medium)
+? Character filled with massive amount of substance.
+* Cum Inflation (Heavy / Extreme)
+? Character filled with impossible amounts of semen.
+* Cum Inflation (Light / Medium)
+? Character filled with massive amount of semen.
+
+#Transformations & Surreal
+(General)
+* Magic Users
+? Characters capable of performing magical or supernatural feats.
+* Hypnotism / Mind Control
+? Roleplay involving mind control or hypnosis.
+* Transformation
+? Physical characteristics changing by magical or chemical means.
+* Supernatural Transformation
+? Transformation by supernatural means.
+* Species Transformation
+? Transformation into a different species.
+* Animal Transformation
+? Transformation into an animal form.
+* Gender Transformation
+? Changes to sex or gender.
+* Body Part Transformation
+? Selective transformation of body parts.
+* Inanimate Object Transformation
+? Transformation into inanimate objects.
+* Oviposition
+? A character laying eggs through an orifice.
+* Tentacles
+? Self-sentient tentacles penetrating a character.
+* Sentient Cocks
+? A cock with sentience and ability to move independently.
+* Coiling
+? Being entwined or held in the grasp of a tail or coils.
+* Tail Pulling
+? Pulling or tugging on another's tail for stimulation.
+* Large Tails
+? Interest in characters with exceptionally large tails.
+* Tails
+? Interest in characters with tails or tail-like appendages.
+* Tailsex
+? Sexual activity involving a character's tail.
+* Wings
+? Interest in characters with wings or wing-like appendages.
+* Fangs / Sharp Teeth
+? Interest in characters with fangs or sharp teeth.
+* Horns
+? Interest in characters with horns or horn-like appendages.
+* Prehensile Cocks
+? Characters with penises they can control independently.
+* Exotic Cocks
+? Penises of unusual or exotic design.
+* Exotic Species
+? Species that are unusual or exotic.
+* Human Cocks
+? Human-like or human genital anatomy.
+* Breeding
+? Sexual intercourse for the purpose of reproduction.
+* Risk of Pregnancy
+? Sexual roleplay where pregnancy is a potential outcome.
+* Extreme Pregnancy
+? Pregnancy with unrealistic size or number of fetuses.
+* Alternative Pregnancy
+? Non-traditional pregnancy scenarios.
+* Male Pregnancy
+? A male character becoming pregnant.
+* Slime / Goo Characters
+? Characters composed of slime or goo.
+* Rubber/Gel Characters
+? Characters composed of rubber, latex or gel.
+* Vore (Being Predator)
+? Being the consuming partner in vore.
+* Vore (Being Prey)
+? Being the consumed partner in vore.
+* Soft Vore
+? Vore where prey is consumed whole causing no damage.
+* Hard Vore
+? Vore where prey is chewed piece by piece.
+* Realistic Vore
+? Vore with realistic physiology.
+* Unrealistic Vore
+? Vore not accounting for realistic physiology.
+* Alternative Vore
+? Vore through orifices other than mouth, penis, vagina or anus.
+* Anal Vore
+? Vore where something is swallowed into the anus.
+* Cock Vore
+? Physically consuming through the penis.
+* Unbirthing
+? Physically consuming through the vagina into the womb.
+* Absorption
+? Vore by merging with predator.
+* Digestion
+? Prey being digested in fluids.
+* Disposal
+? Prey consumed, digested and released as waste.
+* Cooking (Vore)
+? Vore scenarios involving cooking.
+
+#Extreme & Intense Pain
+(General)
+* Breath Control
+? Controlling another character's breathing.
+* Choking
+? Controlling another's breath with extreme force.
+* Cock/Ball Smothering
+? Smothering with genitals.
+* Cock Fucking
+? Inserting penis into another penis.
+* Ballbusting
+? Harm to testicles for sexual pleasure.
+* Anal Prolapse
+? Pulling out insides of anus by force.
+* Castration
+? Removal or disabling of testicles.
+* Emasculation
+? Removal of genitalia or rendering less masculine.
+* Genital Torture
+? Giving negative attention to genitals causing pain.
+* Burning
+? Character being burned.
+* Blueberrification
+? Transformation into blueberry.
+* Bimbofication
+? Transformation into bimbo stereotype.
+* Corruption
+? Moral or behavioral corruption.
+* Disabilities
+? Characters with disabilities or conditions.
+* Fear
+? Engaging with fear as part of roleplay.
+* Mental Torture
+? Psychological abuse extended periods.
+* Sensory Deprivation
+? Removal of one or more senses.
+* Sexual Torture
+? Torture of sexual nature.
+* Nonsexual Torture
+? Extended scenes of pain not sexually derived.
+* Non-Sexual Pain
+? Pain not derived through sexual activity.
+* Snuff
+? Murdering a character as part of sex.
+* Death
+? Character dying at any point by any means.
+* Necrophilia
+? Having sex with dead character.
+* Mutilation
+? Physically damaging character causing irreparable harm.
+* Nullification
+? Removal of any body part.
+* Wound Fucking
+? Sexual penetration of wound sites.
+* Tooth Removal
+? Removal of teeth.
+* Condoms
+? Use of condoms in sexual context.
+* Potions / Injections
+? Magical or medicinal substances for sexual enhancement.
+* Aphrodisiacs
+? Substances that increase sexual arousal.
+* Ice
+? Use of ice during sex for foreplay.
+* Smoking
+? Smoking and/or pleasure derived from smoke.
+
+#Roleplay Styles & Settings
+(General)
+* Second Person
+? Roleplay written from second-person perspective.
+* Roleplay Perspective - First Person
+? First-person perspective roleplay.
+* Roleplay Perspective - Second Person
+? Second-person perspective roleplay.
+* Roleplay Perspective - Third Person
+? Third-person perspective roleplay.
+* Storytelling (Player)
+? Player takes active role in narrating story.
+* Storytelling (Narrator)
+? Third-party narrator guides story.
+* Plot Twists
+? Roleplay involving unexpected narrative turns.
+* Military Themes
+? Roleplay involving military settings or dynamics.
+* Scenes - Office
+? Roleplay set in office environment.
+* Scenes - School
+? Roleplay set in school environment.
+* Scenes - Locker Room
+? Roleplay set in locker room.
+* Scenes - Shower / Bath
+? Roleplay set in shower or bath.
+* Scenes - Dungeon
+? Roleplay set in dungeon.
+* Scenes - Laboratory
+? Roleplay set in laboratory.
+* Scenes - Steampunk
+? Roleplay set in steampunk environment.
+* Scenes - Tribal
+? Roleplay set in tribal environment.
+* Nightclubs / Bars
+? Roleplay set in nightclubs or bars.
+* Short Post Length (~1-3 sentences)
+? Brief, punchy responses.
+* Medium Post Length (~3-7 sentences)
+? Moderate response length.
+* Long Post Length (~2-4 paragraphs)
+? Detailed, elaborate responses.
+* Story (3+ paragraphs)
+? Extensive narrative responses.
+* Dynamic Post Length
+? Flexible response length depending on situation.
+
+#Advanced BDSM & Control
+(General)
+* Puppy / Pony Play
+? Submissive takes on role of feral puppy or pony.
+* Discipline / Reinforcement
+? Using rewards and/or punishments to train.
+* Master / Pet
+? Domination with bottom taking pet role.
+* Master / Slave
+? Domination with bottom taking slave role.
+* General Dominant / Submissive
+? General domination and submission activities.
+* Immobilization
+? A character being entirely physically immobilized.
+* Immobilization (Size)
+? Immobilization due to size differences.
+* Immobilization (Bondage)
+? Immobilization achieved through bondage restraints.
+* Competition
+? Multiple dominants or submissives competing.
+* Lima Syndrome
+? Captor developing empathy for captive.
+* Stockholm Syndrome
+? Captive developing affection for captor.
+* Orgasm control
+? Dominant controlling when submissive achieves orgasm.
+* Orgasm denial
+? Dominant denying submissive orgasm.
+* Pleasure Control / Denial
+? Controlling or denying partner's sexual pleasure.
+* Sexual Frustration
+? Character being exceptionally desperate or horny.
+* Multiple Orgasms
+? Character experiencing multiple orgasms in succession.
+* Ruined Orgasm
+? All stimulation stopped just as orgasm begins.
+* Power exchange
+? A relationship with service at the core.
+* Bathroom Control
+? Character controls when/how another uses bathroom.
+* Bondage (Light)
+? The use of bondage that is mild or moderate.
+* Bondage (Heavy)
+? The use of bondage that is extreme.
+* Chastity
+? Sexual abstinence, either willing or forced.
+* Collar
+? Wearing a collar around the neck.
+* Leash & Collar
+? Adorned with collar attached to leash.
+* Gag
+? Object placed in mouth preventing speech.
+* Blindfolds
+? Objects obscuring vision.
+* Caging
+? Placing in a cage or confining device.
+* Branding
+? Character branded as form of sadomasochism.
+* Piercing
+? Piercing a character's body in painful manner.
+* Needles
+? Piercing skin with needles.
+* Physical Restraints
+? Equipment restricting movement.
+* Hand Cuffs
+? Use of hand cuffs to immobilize.
+* Wax Play
+? Using hot candle wax for stimulation or torture.
+* Flogging/Whipping
+? Use of whips, riding crops, paddles or flogs.
+* Belting/Strapping
+? Use of belts or straps to inflict pain.
+* Paddling
+? Use of paddles to inflict pain.
+* Caning
+? Dominant strikes submissive with cane.
+* Spanking
+? Striking buttocks as foreplay or punishment.
+* Beating
+? Being struck with fists or objects.
+* Gagging / Choking
+? Being made to gag or choke.
+* Hair Pulling
+? Pulling or tugging on another's hair.
+* Scratching
+? One character scratching another.
+* Biting
+? The act of biting or being bitten.
+* Cutting
+? Cutting partner to cause pain.
+* Cock/Pussy slapping
+? Slapping genitalia.
+* Cock/Pussy torture
+? Giving negative attention to genitals causing pain.
+* Light pain
+? Inclusion of light physical pain.
+* Heavy pain
+? Inclusion of heavy physical pain.
+* Breast / Nipple Play
+? Sexual play focused on breasts and nipples.
+* Breast / Nipple Worship
+? Gratuitous acknowledgement of partner's chest.
+* Nipple Penetration
+? Penetrating the nipple with objects.
+* Breast Smothering
+? Smothering with breasts.
+* Genital / Nipple Piercings
+? Piercings on nipples or sexual areas.
+* Hot Wax
+? Using hot candle wax for stimulation or torture.
+* Face Slapping
+? Slaps to the face of any severity.
+* Coiling
+? Being entwined in grasp of tail or coils.
+* Leash
+? Being lead around on a leash.
+* Apparatuses
+? Complex objects with moving parts for bondage.
+* Begging
+? Self-abasing act of pleading as submission.
+* Humiliation
+? Character embarrassed for sexual gratification.
+* Extreme Humiliation
+? Character humiliated to point of mental anguish.
+* Public Humiliation
+? Humiliation in public settings.
+* Name calling
+? Being called names for humiliation or domination.
+* Forced Nudity
+? Forcing character to be nude.
+* Force Feeding
+? Forcing character to consume large amounts.
+* Degradation
+? Character purposefully but consensually degraded.
+* Objectification
+? Being treated as object or furniture.
+* Objectophilia
+? Sexual attraction to inanimate objects.
+* Speech Restrictions
+? Limiting way character permitted to speak.
+* Sissification
+? Changing appearance of male to appear female.
+* Suspension Play
+? Use of suspension apparatuses and rope toys.
+* Uppity
+? Submissive is combative and disobedient.
+* Sadism / Masochism
+? Taking role of sadist or masochist.
+* Sadism
+? Taking role of sadist receiving gratification from administering pain.
+* Masochism
+? Taking role of masochist receiving gratification from pain.
+* Sexual Restraints
+? Command for how submissive may act in sexual situations.
+* Roleplay within RP
+? Characters engaging in roleplay within scene.
+* Bratting
+? Art of clever misbehavior.
+* Body Writing
+? Writing on body usually for humiliation.
+
+#Taboo & Consent Play
+(General)
+* Incest
+? Engaging in an RP in which at least two characters will be related.
+* Forced Incest
+? Forced sexual interaction between related characters.
+* Age Gap
+? Refers to scenes in which there is a significant gap in the ages of characters.
+* Interracial
+? Scenes based on interracial interactions.
+* Raceplay
+? Scenes based on racial stereotypes or racism.
+* Bestiality
+? Refers to a sapient character engaging in a sexual act with a non-sapient animal.
+* Cheating
+? Where one or both partners are being unfaithful to significant others.
+* Exhibitionism
+? Engaging in an RP in which the setting is of a public nature.
+* Voyeurism
+? Refers to the derivation of sexual stimulation from watching others in explicit situations.
+* Dubious consent
+? Situations where one partner's consent is in question, though not outright rape.
+* Non-con / rape
+? Taking/being taken against one's will, often through force.
+* Blackmail / coercion
+? The inclusion of coercion and/or blackmail to receive sex from a partner.
+* Kidnapping
+? The act of abducting a character in an RP for the purpose of abusing.
+* Drugs
+? The use of illicit drugs in the context of an RP.
+* Alcohol
+? The use of alcohol in the context of an RP.
+* Sleep play
+? Engaging in sexual acts with an unconscious/asleep partner.
+* Dub-Consensual
+? Consent is ambiguous but ultimately consensual OOC.
+* Pseudo-rape
+? Scenarios simulating non-consent with full OOC consent.
+* Nonconsensual
+? Roleplay where characters do not consent IC.
+
+#Miscellaneous
+(General)
+* Tomboys
+? Females behaving or presenting masculine manner.
+* Femininity
+? Emphasis on feminine characteristics.
+* Masculinity
+? Emphasis on masculine characteristics.
+* Androgyny
+? Characters displaying both masculine and feminine traits.
+* Tattoos / Body Art
+? Characters with tattoos or body art.
+* Flexibility / Contortionism
+? Exceptional or unrealistic flexibility in positions.
+* Muscle Worship
+? Gratuitous acknowledgment of muscular physique.
+* Strength
+? Attraction to characters displaying physical strength.
+* Orientation Play
+? Roleplay involving different sexual orientations.
+* Polyamory
+? Relationship structures involving multiple partners.
+* Adultery
+? Infidelity within established relationships.
+* Ageplay
+? Characters playing roles of different ages.
+* Age Regression
+? Character mentally or physically regressing to younger age.
+* Babysitter
+? Roleplay involving babysitter scenario.
+* Parent and Child Play
+? Roleplay between characters with parent/child dynamic.
+* DD/lg, MD/lb
+? Daddy/Mommy Dom with Little Girl/Boy dynamic.
+* Underage Characters
+? Characters depicted as below age 18.
+* Fisting
+? The act of placing one's hand(s) and/or arm(s) into a vagina.
+* Gangbang
+? When multiple partners, usually 3 or more, engage in sexual intercourse with a single willing partner.
+* Impregnation
+? Impregnating a character.
+* Pregnancy
+? Fetishizing a pregnant character.
+* Feminization
+? Feminization is a type of role play that involves imposing traditionally female attributes onto a submissive male partner.
+* Cuckold / Cuckquean
+? Refers to the act of a character who will have sexual interaction with a character other than their designated partner.
+* Shaving
+? Interest in shaved or hairless characters or acts of shaving.
+* Glory hole
+? Servicing a partner or receiving service from a partner with a physical barrier between the participants.
+* Diapers
+? A situation in which at least one character will wear a diaper.
+* Futanari/Futa
+? Characters who have an overall feminine body, but have both female and male genitalia.
+* Furry
+? Anthropomorphic animal characters.

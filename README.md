@@ -1,5 +1,11 @@
-<<<<<<< HEAD
 # kinklist-extended
-=======
-Caution: I'm in the process of investigating why some answer patterns were not being correctly encoded and decoded in the URL hash. I have changed the character set used for the hash to ensure URL-safety. This is a breaking change.
->>>>>>> 1b96b97 (Initial commit to Main branch with all updates and PR merges)
+
+This repository includes multiple kinklist files used by the web UI.
+
+Renamed versions:
+- `classic.txt` (previously `LDR.txt`)
+- `light.txt` (previously `classic.txt`)
+- `detailed.txt` (unchanged)
+- `extreme.txt` (previously `plsno.txt`)
+
+Note: The JavaScript uses `kinkSizes` to map hash lengths to file defaults. Make sure any new files are present in the root for loading via `index.html`.

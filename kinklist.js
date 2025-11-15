@@ -34,13 +34,13 @@ var inputKinks = {}
 var colors = {}
 var level = {};
 let kinkSizes = {
-    "209": "classic",
+    "209": "light",
     "285": "detailed",
-    "589": "plsno",
-    "216": "classic",
+    "589": "extreme",
+    "216": "light",
     "288": "detailed",
-    "576": "plsno",
-    "432": "LDR",
+    "576": "extreme",
+    "432": "classic",
 };
 
 var allowHashUpdate = true;
