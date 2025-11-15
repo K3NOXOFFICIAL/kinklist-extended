@@ -10,6 +10,8 @@
             crossorigin="anonymous">
         </script>
         <script src="kinklist.js"></script>
+        <!-- Use Inter font for improved typography -->
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
         <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAAWdEVYdENyZWF0aW9uIFRpbWUAMTAvMjEvMTV5ehY1AAAAZElEQVQ4jaWTwQ3AIAwDbcT+I9f9hjYQA/mAkO7igKAACWdFAF0A2gb0hP0uCyTATyAJSoaK5xGyEmTC9lktmORUdAQvBQ5cJshktoDk0HkmKRNUEmuE6ztYVXe7bT+jW7z9zi8qYiodCjCHKgAAAABJRU5ErkJggg==">
         <link rel="stylesheet" href="kinklist.css">
     </head>
@@ -17,6 +19,7 @@
         <div class="widthWrapper">
             <header class="topbar">
                 <div class="topbar-left">
+                    <img src="assets/icons/logo.svg" alt="Kinklist logo" class="brand-logo">
                     <button id="Edit" aria-label="Edit list" type="button">✎</button>
                     <button id="DarkModeToggle" aria-pressed="true" title="Toggle dark mode" aria-label="Toggle dark mode" type="button">🌓</button>
                     <h1>Kinklist</h1>
@@ -30,12 +33,12 @@
             </select>
             
                     <div class="legend">
-                <div><span data-color="#FFFFFF" class="choice notEntered"></span> <span class="legend-text">Not Entered</span></div>
-                <div><span data-color="#6DB5FE" class="choice favorite"></span> <span class="legend-text">Favourite</span></div>
-                <div><span data-color="#23FD22" class="choice like"></span> <span class="legend-text">Like</span></div>
-                <div><span data-color="#FDFD6B" class="choice maybe"></span> <span class="legend-text">Indifferent or Maybe</span></div>
-                <div><span data-color="#DB6C00" class="choice dislike"></span> <span class="legend-text">Dislike</span></div>
-                <div><span data-color="#920000" class="choice limit"></span> <span class="legend-text">Limit</span></div>
+                <div><span data-color="#e8eef6" class="choice notEntered"></span> <span class="legend-text">Not Entered</span></div>
+                <div><span data-color="#4a90e2" class="choice favorite"></span> <span class="legend-text">Favourite</span></div>
+                <div><span data-color="#40c4a8" class="choice like"></span> <span class="legend-text">Like</span></div>
+                <div><span data-color="#f4bd4f" class="choice maybe"></span> <span class="legend-text">Indifferent or Maybe</span></div>
+                <div><span data-color="#f08a5d" class="choice dislike"></span> <span class="legend-text">Dislike</span></div>
+                <div><span data-color="#ff5964" class="choice limit"></span> <span class="legend-text">Limit</span></div>
                     </div>
                     <div id="ExportWrapper">
                         <input type="text" id="URL">

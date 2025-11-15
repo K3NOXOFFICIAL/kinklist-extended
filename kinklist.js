@@ -96,7 +96,21 @@ $(function(){
             var $category = $('<div class="kinkCategory">')
                     .addClass('cat-' + strToClass(name))
                     .data('category', name);
-            var $h2 = $('<h2>').text(name);
+            var $h2 = $('<h2>');
+            // Icon for the category - try to load SVG asset, fallback to first letter
+            var iconClassName = strToClass(name);
+            var $catIcon = $('<img>').addClass('cat-icon').attr('alt', name + ' icon').attr('src', 'assets/icons/category-' + iconClassName + '.svg');
+            $catIcon.on('error', function(){
+                var $this = $(this);
+                $this.off('error');
+                // Fallback to generic category icon then the first letter
+                $this.attr('src', 'assets/icons/category-default.svg');
+                $this.on('error', function(){
+                    $(this).replaceWith($('<span>').addClass('cat-icon fallback').text(name.substring(0,1).toUpperCase()).attr('aria-hidden', 'true'));
+                });
+            });
+            $h2.append($catIcon);
+            $h2.append(document.createTextNode(name));
             var $toggle = $('<button class="collapse-toggle" aria-expanded="true" title="Toggle section">▾</button>');
             $h2.append($toggle);
             $toggle.on('click pointerdown', function(e){
@@ -157,8 +171,21 @@ $(function(){
                 $choices.addClass('choice-' + strToClass(fields[i]));
                 $('<td>').append($choices).appendTo($row);
             }
-            var kinkLabel = $('<td>').text(kink.kinkName).appendTo($row);
-            if(kink.kinkDesc) {showDescriptionButton(kink.kinkDesc, kinkLabel);}
+            var $labelTd = $('<td>');
+            // Kink icon (small) - use per-kink asset if available
+            var $kinkIcon = $('<img>').addClass('kink-icon').attr('alt', kink.kinkName + ' icon').attr('src', 'assets/icons/kink-' + strToClass(kink.kinkName) + '.svg');
+            $kinkIcon.on('error', function(){
+                var $this = $(this);
+                $this.off('error');
+                $this.attr('src', 'assets/icons/kink-default.svg');
+                $this.on('error', function(){
+                    $(this).replaceWith($('<span>').addClass('kink-icon fallback').text('🔸').attr('aria-hidden', 'true'));
+                });
+            });
+            $labelTd.append($kinkIcon);
+            $labelTd.append($('<span>').addClass('kink-text').text(kink.kinkName));
+            $labelTd.appendTo($row);
+            if(kink.kinkDesc) {showDescriptionButton(kink.kinkDesc, $labelTd);}
             $row.addClass('kink-' + strToClass(kink.kinkName));
             return $row;
         },
