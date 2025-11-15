@@ -1,50 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Kinklist</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-        <meta name="description" content="A personal rating and organization tool for your preferences">
-        <meta name="theme-color" content="#0b0f12">
+        <meta name="description" content="A personal preference rating and organization tool with modern design">
+        <meta name="theme-color" content="#0a0e11">
+        <meta name="color-scheme" content="dark">
+        <title>Kinklist - Modern Rating Tool</title>
+        
         <script
             src="https://code.jquery.com/jquery-3.4.1.min.js"
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
             crossorigin="anonymous">
         </script>
         <script src="kinklist.js"></script>
-        <!-- Use Inter font for improved typography -->
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+        
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        
+        <!-- Favicon -->
         <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAAWdEVYdENyZWF0aW9uIFRpbWUAMTAvMjEvMTV5ehY1AAAAZElEQVQ4jaWTwQ3AIAwDbcT+I9f9hjYQA/mAkO7igKAACWdFAF0A2gb0hP0uCyTATyAJSoaK5xGyEmTC9lktmORUdAQvBQ5cJshktoDk0HkmKRNUEmuE6ztYVXe7bT+jW7z9zi8qYiodCjCHKgAAAABJRU5ErkJggg==">
+        
+        <!-- Stylesheet -->
         <link rel="stylesheet" href="kinklist.css">
     </head>
     <body class="dark">
         <div class="widthWrapper">
-            <header class="topbar">
+            <header class="topbar" role="banner">
                 <div class="topbar-brand">
                     <img src="assets/icons/logo.svg" alt="Kinklist logo" class="brand-logo">
                     <h1>Kinklist</h1>
-                    <p class="sr-only" aria-hidden="true">A personal rating tool</p>
                 </div>
-                <nav class="topbar-actions" role="navigation" aria-label="Primary controls">
+                <nav class="topbar-actions" role="navigation" aria-label="Main controls">
                     <div class="left-controls">
-                        <button class="btn btn-ghost" id="Edit" aria-label="Edit list" type="button" title="Edit the list">
-                            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1.003 1.003 0 0 0 0-1.42l-2.34-2.34a1.003 1.003 0 0 0-1.42 0l-1.83 1.83 3.75 3.75 1.84-1.82z"/></svg>
+                        <button class="btn btn-ghost" id="Edit" aria-label="Edit list content" type="button" title="Edit the kinklist (Ctrl+E)">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1.003 1.003 0 0 0 0-1.42l-2.34-2.34a1.003 1.003 0 0 0-1.42 0l-1.83 1.83 3.75 3.75 1.84-1.82z"/></svg>
                         </button>
-                        <button class="btn btn-ghost" id="DarkModeToggle" aria-pressed="true" title="Toggle dark mode" aria-label="Toggle dark mode" type="button">
-                            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z"/></svg>
+                        <button class="btn btn-ghost" id="DarkModeToggle" aria-pressed="true" title="Toggle dark/light mode" aria-label="Toggle theme" type="button">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z"/></svg>
                         </button>
                     </div>
                     <div class="controls">
-                        <label class="select-inline" for="listType">
-                            <span class="sr-only">Select list</span>
-                            <select id="listType">
+                        <label class="select-label" for="listType">
+                            <span class="sr-only">Select kinklist type</span>
+                            <select id="listType" aria-label="Choose kinklist template">
                                 <option value="LDR">LDR</option>
                                 <option value="classic">Classic</option>
                                 <option value="detailed">Detailed</option>
                                 <option value="plsno">Please Don't</option>
                             </select>
                         </label>
-                        <div class="legend" role="list" aria-label="Legend">
+                        <div class="legend" role="list" aria-label="Rating legend">
                             <div><span data-color="#e8eef6" class="choice notEntered"></span> <span class="legend-text">Not Entered</span></div>
                             <div><span data-color="#4a90e2" class="choice favorite"></span> <span class="legend-text">Favourite</span></div>
                             <div><span data-color="#40c4a8" class="choice like"></span> <span class="legend-text">Like</span></div>
@@ -53,36 +59,42 @@
                             <div><span data-color="#ff5964" class="choice limit"></span> <span class="legend-text">Limit</span></div>
                         </div>
                         <div id="ExportWrapper" class="export-wrapper">
-                            <input type="text" id="URL" class="input" placeholder="Shared link" aria-label="Exported image url" readonly>
-                            <button id="Export" class="btn btn-primary" type="button">Export</button>
-                            <div id="Loading" class="loading" aria-hidden="true">Uploading…</div>
+                            <input type="text" id="URL" class="input" placeholder="Share link will appear here" aria-label="Exported image URL" readonly>
+                            <button id="Export" class="btn btn-primary" type="button" title="Export your ratings as an image">Export</button>
+                            <div id="Loading" class="loading" aria-live="polite" aria-hidden="true">Uploading…</div>
                         </div>
-                        <button id="StartBtn" class="btn btn-primary" aria-label="Open input dialog" type="button" title="Open quick input">➕</button>
+                        <button id="StartBtn" class="btn btn-primary" aria-label="Quick input" type="button" title="Quick input mode (Enter)">➕ Rate</button>
                     </div>
                 </nav>
             </header>
             <div id="InputList"></div>
         </div>
-        <div id="EditOverlay" class="overlay" aria-hidden="true">
-            <textarea id="Kinks" aria-label="Edit kinklist textarea">
+
+        <!-- Edit Overlay -->
+        <div id="EditOverlay" class="overlay" role="dialog" aria-modal="true" aria-labelledby="edit-title" aria-hidden="true">
+            <textarea id="Kinks" aria-label="Edit kinklist content" placeholder="Edit your kinklist here...">
 * Standy...
             </textarea>
-            <button id="KinksOK" class="btn btn-primary" type="button">Accept</button>
+            <button id="KinksOK" class="btn btn-primary" type="button">Save Changes</button>
         </div>
-        <div id="InputOverlay" class="overlay" aria-hidden="true">
+
+        <!-- Input Overlay -->
+        <div id="InputOverlay" class="overlay" role="dialog" aria-modal="true" aria-labelledby="input-title" aria-hidden="true">
             <div class="widthWrapper">
-                <div id="InputPrevious"></div>
+                <div id="InputPrevious" aria-label="Previous items"></div>
                 <div id="InputCurrent">
                     <h2 id="InputCategory"></h2>
                     <h3 id="InputField"></h3>
-                    <button class="closePopup" type="button" aria-label="Close">×</button>
+                    <button class="closePopup" type="button" aria-label="Close rating">×</button>
                     <div id="InputValues"></div>
                 </div>
-                <div id="InputNext"></div>
+                <div id="InputNext" aria-label="Next items"></div>
             </div>
         </div>
-        <div id="DescriptionOverlay" class="overlay" aria-hidden="true">
-            <div id="Description"></div>
+
+        <!-- Description Overlay -->
+        <div id="DescriptionOverlay" class="overlay" role="dialog" aria-modal="true" aria-hidden="true">
+            <div id="Description" role="document"></div>
         </div>
     </body>
 </html>
