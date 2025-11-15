@@ -1,5 +1,5 @@
 #Bodies
-(General)
+(Self, Partner)
 * Skinny
 ? Expresses an interest in characters that are waifish, thin, or slender.
 * Chubby
@@ -196,7 +196,7 @@
 ? Engaging in sexual acts with an unconscious/asleep partner
 
 #Taboo
-(General)
+(Self, Partner)
 * Incest
 ? Engaging in an RP in which at least two characters will be related
 * Age Gap
@@ -230,7 +230,7 @@
 ? Various types of monsters, Extraterrestrials, and aesthetically challenging characters.
 
 #Fluids
-(General)
+(Giving, Receiving)
 * Watersports
 ? Pertains to the inclusion of urine, or the expelling of urine, in any form, in the sexual context of an RP.
 * Scat
@@ -318,7 +318,7 @@
 * Dynamic Post Length
 
 #Medium
-(General)
+(Self, Partner)
 * Skype
 * Kik
 * Reddit
@@ -339,7 +339,7 @@
 * Occasional Replies (24+ hours)
 
 #Oral & Genital Play
-(General)
+(Giving, Receiving)
 * Kissing
 ? Expressing an interest in kissing or being kissed by another character.
 * Licking
@@ -372,7 +372,7 @@
 ? The act of stimulating oneself sexually.
 
 #Penetration
-(General)
+(Giving, Receiving)
 * Penetration
 ? Sexual activity involving insertion of objects or body parts into body orifices.
 * Creampie
@@ -387,7 +387,7 @@
 ? Character's stomach bulging from insertion or food.
 
 #Cum & Fluids
-(General)
+(Giving, Receiving)
 * Bukkaake
 ? Multiple people ejaculating on single recipient.
 * Cum Milking
@@ -418,7 +418,7 @@
 ? Incorporating food into sexual context.
 
 #Roleplay Styles & Settings
-(General)
+(Self, Partner)
 * Roleplay Perspective - First Person
 ? First-person perspective roleplay.
 * Roleplay Perspective - Third Person
@@ -451,7 +451,7 @@
 ? Flexible response length depending on situation.
 
 #Advanced BDSM
-(General)
+(As Dominant, As Submissive)
 * Puppy / Pony Play
 ? Submissive takes on role of feral puppy or pony.
 * Master / Pet
@@ -506,7 +506,7 @@
 ? Writing on body usually for humiliation.
 
 #Consent Play
-(General)
+(Actor, Target)
 * Dubious consent
 ? Situations where one partner's consent is in question, though not outright rape.
 * Non-con / rape
@@ -527,7 +527,7 @@
 ? Scenarios simulating non-consent with full OOC consent.
 
 #Extreme Body Types
-(General)
+(Self, Partner)
 * Hyper Breasts
 ? Exaggeratedly or impossibly large breasts.
 * Hyper Asses
@@ -546,7 +546,7 @@
 ? Expresses an interest in characters with excessive facial or body hair.
 
 #Additional Play Styles
-(General)
+(Giving, Receiving)
 * Frotting
 ? Two penises being ground against each other for gratification.
 * Cock Warming
@@ -579,7 +579,7 @@
 ? Using photographs as reference material.
 
 #Species & Characters
-(General)
+(Self, Partner)
 * Canines
 ? Canine or dog-like characters, including wolves and similar species.
 * Felines
@@ -602,7 +602,7 @@
 ? Mechanical, robotic, or cyborg entities.
 
 #Preferences & Styles
-(General)
+(Self, Partner)
 * Consensual
 ? Sexual interactions that are fully consenting by free will.
 * Private Roleplay
@@ -631,7 +631,7 @@
 ? A preference for existing franchise characters.
 
 #Size & Growth
-(General)
+(Self, Partner)
 * Size Differences (1-3 Feet)
 ? Size difference of 1 to 3 feet between characters.
 * Smaller Characters
@@ -650,7 +650,7 @@
 ? Growing in body size by magical or fantastic means.
 
 #Advanced Transformation
-(General)
+(Self, Partner)
 * Magic Users
 ? Characters capable of performing magical or supernatural feats.
 * Hypnotism / Mind Control
@@ -671,7 +671,7 @@
 ? A male character becoming pregnant.
 
 #Touch & Sensation
-(General)
+(Actor, Subject)
 * Navel Play
 ? Engaging in sexual acts involving pleasure from the bellybutton.
 * Fingering (Vaginal)
@@ -694,7 +694,7 @@
 ? The use of sex toys that carry an electrical current; sometimes painful.
 
 #Miscellaneous Fetishes
-(General)
+(Giving, Receiving)
 * Tattoos / Body Art
 ? Characters with tattoos or body art.
 * Muscle Worship

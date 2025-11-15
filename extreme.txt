@@ -1,5 +1,5 @@
 #Bodies
-(General)
+(Self, Partner)
 * Skinny
 ? Expresses an interest in characters that are waifish, thin, or slender.
 * Chubby
@@ -229,7 +229,7 @@
 ? Engaging in sexual acts with an unconscious/asleep partner
 
 #Taboo
-(General)
+(Self, Partner)
 * Incest
 ? Engaging in an RP in which at least two characters will be related
 * Age Gap
@@ -267,7 +267,7 @@
 ? The formerly living, not currently in posession of a body
 
 #Fluids
-(General)
+(Giving, Receiving)
 * Blood
 ? Pertains to the inclusion of blood or the retrieval of blood in any form in a sexual context, or engaging in acts which will draw blood.
 * Watersports
@@ -371,7 +371,7 @@
 * Dynamic Post Length
 
 #Medium
-(General)
+(Self, Partner)
 * Skype
 * Kik
 * Reddit
@@ -392,7 +392,7 @@
 * Occasional Replies (24+ hours)
 
 #Species & Characteristics
-(General)
+(Self, Partner)
 * Canines
 ? Canine or dog-like characters, including wolves and similar species.
 * Felines
@@ -491,7 +491,7 @@
 ? Centaur-like characters with animal lower body.
 
 #Sexuality & Preferences
-(General)
+(Self, Partner)
 * Consensual
 ? Sexual interactions that are fully consenting by free will.
 * Affection
@@ -544,7 +544,7 @@
 ? A preference for characters with lower intelligence.
 
 #Oral & Genital Play
-(General)
+(Giving, Receiving)
 * Kissing
 ? Expressing an interest in kissing or being kissed by another character.
 * Licking
@@ -611,7 +611,7 @@
 ? Sexual stimulation by direct, physical contact of the hands or fingers to the genitals.
 
 #Anal & Penetration
-(General)
+(Giving, Receiving)
 * Penetration
 ? Sexual activity involving insertion of objects or body parts into body orifices.
 * Creampie
@@ -638,7 +638,7 @@
 ? Being penetrated from one orifice extending through another.
 
 #Cum Play & Bodily Fluids
-(General)
+(Giving, Receiving)
 * Bukkaake
 ? Multiple people ejaculating on single recipient.
 * Hard Cum Facials
@@ -743,7 +743,7 @@
 ? Pertains to inclusion of fecal matter in sexual context.
 
 #Intensity, Size & Growth
-(General)
+(Self, Partner)
 * Hyper Muscle Growth
 ? The process of muscles growing to exaggerated sizes.
 * Hyper Fat
@@ -804,7 +804,7 @@
 ? Character filled with massive amount of semen.
 
 #Transformations & Surreal
-(General)
+(Self, Partner)
 * Magic Users
 ? Characters capable of performing magical or supernatural feats.
 * Hypnotism / Mind Control
@@ -897,7 +897,7 @@
 ? Vore scenarios involving cooking.
 
 #Extreme & Intense Pain
-(General)
+(Giving, Receiving)
 * Breath Control
 ? Controlling another character's breathing.
 * Choking
@@ -964,7 +964,7 @@
 ? Smoking and/or pleasure derived from smoke.
 
 #Roleplay Styles & Settings
-(General)
+(Self, Partner)
 * Second Person
 ? Roleplay written from second-person perspective.
 * Roleplay Perspective - First Person
@@ -1011,7 +1011,7 @@
 ? Flexible response length depending on situation.
 
 #Advanced BDSM & Control
-(General)
+(As Dominant, As Submissive)
 * Puppy / Pony Play
 ? Submissive takes on role of feral puppy or pony.
 * Discipline / Reinforcement
@@ -1172,7 +1172,7 @@
 ? Writing on body usually for humiliation.
 
 #Taboo & Consent Play
-(General)
+(Actor, Target)
 * Incest
 ? Engaging in an RP in which at least two characters will be related.
 * Forced Incest
@@ -1213,7 +1213,7 @@
 ? Roleplay where characters do not consent IC.
 
 #Miscellaneous
-(General)
+(Giving, Receiving)
 * Tomboys
 ? Females behaving or presenting masculine manner.
 * Femininity
