@@ -30,6 +30,7 @@ body {
 	background-color:var(--bg);
 	color:var(--text);
 }
+body { margin: 0; }
 
 h2 {
 	padding:0;
@@ -97,7 +98,7 @@ td {
 .kinkCategory .kinkGroup { max-height: 9999px; overflow: hidden; transition: max-height .28s ease, opacity .12s ease; }
 .kinkCategory.collapsed .kinkGroup { max-height: 0; opacity: 0; }
 .kinkRow { transition: background .12s ease, transform .12s ease; }
-.kinkRow:hover { background: rgba(255,255,255,0.02); transform: translateX(2px); }
+.kinkRow:hover { background: rgba(255,255,255,0.03); transform: translateX(2px); }
 
 td + td { border-left-style:none }
 
@@ -119,6 +120,7 @@ td + td { border-left-style:none }
 	cursor:pointer;
 	font-size:0;
 	padding:0;
+}
 
 .choice + .choice { margin-left:var(--touchGap); }
 
@@ -137,17 +139,22 @@ button:active { transform: translateY(1px); }
 
 .choice { -webkit-tap-highlight-color: transparent; }
 
+/* Improve visibility of selected choices in dark mode */
+body.dark .choice.selected, body.dark .selected > .choice {
+	border-color: rgba(255,255,255,0.12);
+}
+body.dark .choice:focus, body.dark .choice:active { outline: 3px solid rgba(255,255,255,0.12); }
+
 .legend {
 	vertical-align:middle;
 	font-size:14px;
 	display:flex;
 	gap:12px;
+	color:var(--muted);
 
-/* Top headline */
-.topbar h1 { margin:0; font-size:20px; font-weight:700; letter-spacing:-0.2px }
+/* Top headline: moved out of .legend */
 	align-items:center;
 	flex-wrap:wrap;
-.legend { color:var(--muted); }
 .legend div { display:inline-block }
 
 .legend .choice {
@@ -161,6 +168,7 @@ button:active { transform: translateY(1px); }
 	margin-right:8px;
 	box-shadow: 0 1px 4px rgba(0,0,0,0.08);
 }
+body.dark .legend .choice { box-shadow: 0 1px 4px rgba(255,255,255,0.03); }
 
 .legend-text { vertical-align:middle }
 
@@ -184,7 +192,7 @@ button:active { transform: translateY(1px); }
 	font-size:16px;
 	padding:10px;
 	text-align:center;
-	color:#666;
+	color:var(--text);
 	font-weight:700
 }
 
@@ -201,8 +209,8 @@ button:active { transform: translateY(1px); }
 	box-shadow: 0 2px 8px rgba(0,0,0,0.12);
 	border-radius:4px;
 	cursor:pointer;
-	transition:all .3s ease-in-out
-#Export:hover { opacity:.85 }
+	transition:all .3s ease-in-out;
+}
 #Export:hover { opacity:.85 }
 
 #Loading {
@@ -229,8 +237,9 @@ button:active { transform: translateY(1px); }
 	border-left-color:#CCC;
 	border-right-color:#666;
 	animation:spin .5s infinite linear;
-	margin-left:-40px
+	margin-left:-40px;
 	background-color:var(--card-bg);
+}
 
 @media (min-width: 1700px) {
 	.legend {
@@ -382,6 +391,10 @@ button:active { transform: translateY(1px); }
 	gap:12px;
 	padding:8px 10px;
 	flex-wrap:wrap;
+	background-color: var(--card-bg);
+	border-radius: 10px;
+	margin: 10px 5px;
+	box-shadow: 0 2px 10px rgba(0,0,0,0.12);
 }
 .topbar-left{
 	display:flex;
@@ -390,11 +403,15 @@ button:active { transform: translateY(1px); }
 }
 
 .brand-logo { width:36px; height:36px; border-radius:6px; object-fit:cover; box-shadow:0 2px 8px rgba(0,0,0,0.08); }
+body.dark .brand-logo { box-shadow: 0 2px 8px rgba(255,255,255,0.02); }
 .topbar-right{
 	display:flex;
 	align-items:center;
 	gap:8px;
 }
+
+/* Top headline */
+.topbar h1 { margin:0; font-size:20px; font-weight:700; letter-spacing:-0.2px }
 
 select#listType {
 	height: var(--touchTarget);
@@ -477,7 +494,9 @@ button:focus { outline: 3px solid rgba(0,0,0,0.12); }
 	top: 15px; 
 	left: 10%;
 	border-radius:5px;
-	font-family:monospace,'Courier new',Courier
+	font-family:monospace,'Courier new',Courier;
+	background-color:var(--card-bg);
+	color:var(--text);
 }
 
 #EditOverlay #KinksOK {
@@ -523,7 +542,9 @@ button:focus { outline: 3px solid rgba(0,0,0,0.12); }
 	display:block;
 	box-sizing:border-box;
 	padding:10px;
-	background-color:#EEE
+	background-color:var(--card-bg);
+	color:var(--text);
+	border-radius: 6px;
 }
 
 #InputOverlay .widthWrapper .kink-simple {
@@ -557,7 +578,8 @@ button:focus { outline: 3px solid rgba(0,0,0,0.12); }
 
 #InputOverlay .widthWrapper #InputPrevious .kink-simple:first-child,
 #InputOverlay .widthWrapper #InputNext .kink-simple:nth-child(3) {
-	background-color:#BBB;
+	background-color:var(--card-bg);
+	opacity:0.95;
 	font-size:10px;
 	margin-left:12px;
 	margin-right:12px;
@@ -566,7 +588,8 @@ button:focus { outline: 3px solid rgba(0,0,0,0.12); }
 
 #InputOverlay .widthWrapper #InputPrevious .kink-simple:nth-child(2),
 #InputOverlay .widthWrapper #InputNext .kink-simple:nth-child(2) {
-	background-color:#CCC;
+	background-color:var(--card-bg);
+	opacity:0.9;
 	font-size:11px;
 	margin-left:6px;
 	margin-right:6px;
@@ -575,7 +598,8 @@ button:focus { outline: 3px solid rgba(0,0,0,0.12); }
 
 #InputOverlay .widthWrapper #InputPrevious .kink-simple:nth-child(3),
 #InputOverlay .widthWrapper #InputNext .kink-simple:first-child {
-	background-color:#DDD;
+	background-color:var(--card-bg);
+	opacity:0.85;
 	margin-left:3px;
 	margin-right:3px
 }
@@ -634,20 +658,22 @@ button:focus { outline: 3px solid rgba(0,0,0,0.12); }
 
 #InputOverlay .widthWrapper #InputCurrent #InputValues .big-choice {
 	padding:12px 14px;
-	background-color:rgba(255,255,255,0.75);
+	background-color:var(--card-bg);
 	border-radius:4px;
 	margin-top:5px;
-	cursor:pointer
+	cursor:pointer;
+	border: 1px solid var(--border);
+	color: var(--text);
 }
 
-#InputOverlay .widthWrapper #InputCurrent #InputValues .big-choice.selected { font-weight:700 }
+#InputOverlay .widthWrapper #InputCurrent #InputValues .big-choice.selected { font-weight:700; border-color: var(--accent); }
 
 #InputOverlay .widthWrapper #InputCurrent #InputValues .big-choice.selected .choice { opacity:1 }
 
 #InputOverlay .widthWrapper #InputCurrent #InputValues .big-choice:hover {
 	padding:8px;
-	border:solid #999 2px;
-	background-color:rgba(255,255,255,1)
+	border: 2px solid var(--accent);
+	background-color: var(--card-bg);
 }
 
 #InputOverlay .widthWrapper #InputCurrent #InputValues .big-choice .btn-num-text {
