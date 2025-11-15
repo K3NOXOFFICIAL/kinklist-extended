@@ -46,6 +46,17 @@ let kinkSizes = {
 var allowHashUpdate = true;
 var isHashUpdating = false;
 var scrollTimeout = null;
+var lastScrollTime = 0;
+var parseHashTimeout = null;
+function runAfterScrollSettled(fn, delay) {
+    delay = delay || 200;
+    if (window.isScrolling || ((new Date()).getTime() - lastScrollTime < 1000)) {
+        setTimeout(function(){ runAfterScrollSettled(fn, delay); }, delay);
+    }
+    else {
+        try { fn(); } catch(e) { console.error('runAfterScrollSettled error', e); }
+    }
+}
 // Use history.replaceState to update the hash without triggering navigation/scroll
 function setHashWithoutScroll(hash){
     try {
@@ -91,7 +102,7 @@ function debounce(func, wait, immediate) {
 
 // Debounced version of updateHash with a 300ms delay
 const debouncedUpdateHash = debounce(function() {
-    if (!isHashUpdating && typeof window.isScrolling !== 'undefined' && !window.isScrolling) {
+    if (!isHashUpdating) {
         isHashUpdating = true;
         setHashWithoutScroll(inputKinks.updateHash());
         setTimeout(function() {
@@ -107,7 +118,7 @@ $(function(){
     var imgurClientId = '9db53e5936cd02f';
 
     // Force loading the default item
-    LoadList();
+    runAfterScrollSettled(function(){ LoadList(); }, 0);
 
     $("#listType").change(LoadList);
     
@@ -144,23 +155,21 @@ $(function(){
                         .attr('title', levels[i])
                         .appendTo($container)
                         .on('click', function(){
-                                    // If a scroll is currently in progress, ignore the click to prevent accidental toggles
-                                    if (typeof window.isScrolling !== 'undefined' && window.isScrolling) return;
-                                    $container.find('button').removeClass('selected');
-                                    $(this).addClass('selected');
-                                    // Update selection state map based on category/kink/field
-                                    var $choices = $(this).closest('.choices');
-                                    var $kinkRow = $choices.closest('tr.kinkRow');
-                                    var $cat = $choices.closest('.kinkCategory');
-                                    if($kinkRow.length && $cat.length) {
-                                        var category = $cat.data('category');
-                                        var kink = $kinkRow.data('kink');
-                                        var field = $choices.data('field');
-                                        var levelInt = $(this).data('levelInt');
-                                        var key = strToClass(category) + '|' + strToClass(kink) + '|' + strToClass(field);
-                                        inputKinks.selectionState[key] = levelInt;
-                                    }
-                                });
+                            $container.find('button').removeClass('selected');
+                            $(this).addClass('selected');
+                            // Update selection state map based on category/kink/field
+                            var $choices = $(this).closest('.choices');
+                            var $kinkRow = $choices.closest('tr.kinkRow');
+                            var $cat = $choices.closest('.kinkCategory');
+                            if($kinkRow.length && $cat.length) {
+                                var category = $cat.data('category');
+                                var kink = $kinkRow.data('kink');
+                                var field = $choices.data('field');
+                                var levelInt = $(this).data('levelInt');
+                                var key = strToClass(category) + '|' + strToClass(kink) + '|' + strToClass(field);
+                                inputKinks.selectionState[key] = levelInt;
+                            }
+                        });
             }
             return $container;
         },
@@ -215,6 +224,10 @@ $(function(){
         fillInputList: function(){
             // Save current selections so they are not lost when rebuilding the DOM
             var savedSelection = inputKinks.saveSelectionKeys();
+            // Preserve current scroll position so DOM updates don't jump the user
+            var prevScrollTop = (window && (window.pageYOffset || document.documentElement.scrollTop)) || 0;
+            // Hide the input list visually to avoid flicker during rebuild (but keep layout using opacity)
+            $('#InputList').css('opacity', 0);
             $('#InputList').empty();
             inputKinks.createColumns();
 
@@ -240,16 +253,20 @@ $(function(){
             if(savedSelection && savedSelection.length) {
                 inputKinks.restoreSavedSelectionFromKeys(savedSelection, false);
             }
+            // Restore scroll position and un-hide InputList
+            setTimeout(function(){
+                if(typeof window.scrollTo === 'function' && !(window.navigator && window.navigator.userAgent && window.navigator.userAgent.indexOf('jsdom') !== -1)) {
+                    window.scrollTo(0, prevScrollTop);
+                }
+                $('#InputList').css('opacity', 1);
+            }, 0);
 
             // Make things update hash
-            $('#InputList').find('button.choice').on('click', function(e){
-                // Ignore clicks while a scroll is in progress to prevent accidental toggles during fast scrolling
-                if (allowHashUpdate && !isHashUpdating && typeof window.isScrolling !== 'undefined' && !window.isScrolling) {
+            $('#InputList').find('button.choice').on('click', function(){
+                if (allowHashUpdate && !isHashUpdating) {
                     //location.hash = inputKinks.updateHash();
                     debouncedUpdateHash();
                 }
-                e.preventDefault();
-                e.stopPropagation();
             });
         },
         init: function(){
@@ -268,13 +285,29 @@ $(function(){
             (function(){
 
                 var lastResize = 0;
+                var lastBodyWidth = (document.body && document.body.scrollWidth) ? document.body.scrollWidth : 0;
                 $(window).on('resize', function(){
                     var curTime = (new Date()).getTime();
                     lastResize = curTime;
                     setTimeout(function(){
                         if(lastResize === curTime) {
-                            inputKinks.fillInputList();
-                            inputKinks.parseHash();
+                            // If width hasn't changed, it's likely just the browser chrome hide/show; skip layout rebuilds
+                            var currentWidth = (document.body && document.body.scrollWidth) ? document.body.scrollWidth : 0;
+                            if (currentWidth === lastBodyWidth) {
+                                return;
+                            }
+                            lastBodyWidth = currentWidth;
+                            // If we have very recently scrolled, wait a bit longer before rebuilding
+                            var timeSinceScroll = (new Date()).getTime() - lastScrollTime;
+                            if (timeSinceScroll < 1000 || window.isScrolling) {
+                                // Defer until after scrolling settles
+                                setTimeout(function(){
+                                    runAfterScrollSettled(function(){ inputKinks.fillInputList(); }, 0);
+                                }, 1000);
+                            }
+                            else {
+                                runAfterScrollSettled(function(){ inputKinks.fillInputList(); }, 0);
+                            }
                         }
                     }, 500);
                 });
@@ -619,8 +652,26 @@ $(function(){
             return inputKinks.encode(Object.keys(colors).length, hashValues);
         },
         parseHash: function(){
-            if (isHashUpdating) return; // Prevent re-entrant calls
+            // Prevent re-entrant calls; clear any pending retry
+            if (isHashUpdating) return;
+            if (parseHashTimeout) {
+                clearTimeout(parseHashTimeout);
+                parseHashTimeout = null;
+            }
             isHashUpdating = true;
+
+            // If we are actively scrolling or recently scrolled, delay parsing hash until scrolling settles.
+            var now = (new Date()).getTime();
+            if (window.isScrolling || (now - lastScrollTime) < 1000) {
+                // Clear and set a single retry timer
+                if (parseHashTimeout) clearTimeout(parseHashTimeout);
+                parseHashTimeout = setTimeout(function(){
+                    parseHashTimeout = null;
+                    isHashUpdating = false;
+                    inputKinks.parseHash();
+                }, 1000);
+                return;
+            }
 
             let hash = location.hash.substring(1);
             if(hash.length < 10) {
@@ -630,12 +681,14 @@ $(function(){
 
             let values = inputKinks.decode(Object.keys(colors).length, hash);
             // select correct kink list
-            const kinkListHashOption = kinkSizes[values.length.toString()];
+            const _kinkSizes = (typeof window !== 'undefined' && window.kinkSizes) ? window.kinkSizes : kinkSizes;
+            const kinkListHashOption = _kinkSizes[values.length.toString()];
             if (kinkListHashOption !== undefined) {
+                // Kink list size mapping found; proceed
                 let $listType = $('#listType');
                 $listType.val(kinkListHashOption);
                 LoadList().then(function() {
-                    inputKinks.applySaveToList(values);
+                    runAfterScrollSettled(function(){ inputKinks.applySaveToList(values); }, 0);
                     isHashUpdating = false;
                 });
                 return;
@@ -925,6 +978,7 @@ $(function(){
     window.isScrolling = false;
     $(window).on('scroll touchmove', function() {
         window.isScrolling = true;
+        lastScrollTime = (new Date()).getTime();
         clearTimeout(scrollTimeout);
         scrollTimeout = setTimeout(function() {
             window.isScrolling = false;
