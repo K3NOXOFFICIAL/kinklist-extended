@@ -124,6 +124,10 @@ $(function(){
     
     inputKinks = {
         $columns: [],
+            // exportScale controls how many physical pixels per CSS pixel the exported canvas will use.
+            // Set to 1 to keep original behaviour (no extra density). Set to 2 or higher for HiDPI
+            // exports. You can override this at runtime with `window.kinklistExportScale`.
+            exportScale: (typeof window !== 'undefined' && typeof window.kinklistExportScale === 'number') ? window.kinklistExportScale : 3,
         selectionState: {},
         createCategory: function(name, fields){
             var $category = $('<div class="kinkCategory">')
@@ -335,7 +339,24 @@ $(function(){
             context.fillStyle = '#e6e6e6';
 
             var levels = Object.keys(colors);
-            var x = context.canvas.width - 15 - (120 * levels.length);
+            // compute CSS width by dividing physical px width by scale
+            var scale = 1;
+            try {
+                var cssWidth = 0;
+                if (context && context.canvas) {
+                    if (typeof $(context.canvas).width === 'function') {
+                        cssWidth = $(context.canvas).width();
+                        scale = context.canvas.width / cssWidth;
+                    }
+                    else {
+                        // fallback if jQuery isn't available
+                        scale = (typeof inputKinks.exportScale === 'number') ? inputKinks.exportScale : 1;
+                        cssWidth = Math.round(context.canvas.width / scale);
+                    }
+                }
+            } catch(e) { cssWidth = context.canvas.width; scale = 1; }
+
+            var x = cssWidth - 15 - (120 * levels.length);
             for(var i = 0; i < levels.length; i++) {
                 context.beginPath();
                 context.arc(x + (120 * i), 17, 8, 0, 2 * Math.PI, false);
@@ -349,30 +370,44 @@ $(function(){
                 context.fillText(levels[i], x + 15 + (i * 120), 22);
             }
         },
-        setupCanvas: function(width, height, username){
-            $('canvas').remove();
-            var canvas = document.createElement('canvas');
-            canvas.width = width;
-            canvas.height = height;
+            setupCanvas: function(width, height, username){
+                // Determine target scale for exported canvas
+                var scale = 1;
+                if (typeof window !== 'undefined' && typeof window.kinklistExportScale === 'number') {
+                    scale = Math.max(1, Math.floor(window.kinklistExportScale));
+                }
+                else if (typeof inputKinks.exportScale === 'number') {
+                    scale = Math.max(1, Math.floor(inputKinks.exportScale));
+                }
 
-            var $canvas = $(canvas);
-            $canvas.css({
-                width: width,
-                height: height
-            });
-            // $canvas.insertBefore($('#InputList'));
+                $('canvas').remove();
+                var canvas = document.createElement('canvas');
+                // Use physical pixel size for canvas width/height, but preserve CSS size
+                canvas.width = Math.ceil(width * scale);
+                canvas.height = Math.ceil(height * scale);
 
-            var context = canvas.getContext('2d');
-            context.fillStyle = '#1b1b1e';
-            context.fillRect(0, 0, canvas.width, canvas.height);
+                var $canvas = $(canvas);
+                $canvas.css({
+                    width: width + 'px',
+                    height: height + 'px'
+                });
 
-            context.font = "bold 24px Arial";
-            context.fillStyle = '#e6e6e6';
-            context.fillText('Kinklist 1.1 ' + username, 5, 25);
+                var context = canvas.getContext('2d');
+                // scale drawing operations so code can use CSS pixels
+                context.scale(scale, scale);
 
-            inputKinks.drawLegend(context);
-            return { context: context, canvas: canvas };
-        },
+                var bgColor = (typeof window !== 'undefined' && typeof window.kinklistExportBg === 'string') ? window.kinklistExportBg : '#1b1b1e';
+                context.fillStyle = bgColor;
+                // Fill CSS-sized rect (we scaled the context)
+                context.fillRect(0, 0, width, height);
+
+                context.font = "bold 24px Arial";
+                context.fillStyle = '#e6e6e6';
+                context.fillText('Kinklist 1.1 ' + username, 5, 25);
+
+                inputKinks.drawLegend(context);
+                return { context: context, canvas: canvas };
+            },
         drawCallHandlers: {
             simpleTitle: function(context, drawCall){
                 context.fillStyle = '#e6e6e6';
