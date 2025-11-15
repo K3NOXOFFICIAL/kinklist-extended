@@ -3,6 +3,32 @@
 * You and 1 male
 * You and 1 female
 * You and 1 male, 1 female
+* You and 2 males
+* You and 2 females
+* You and multiple partners
+
+#Body Preferences
+(Self, Partner)
+* Slim
+? Expresses an interest in bodies that are slim or skinny
+* Muscular
+? Expresses an interest in bodies that show muscle tone
+* Average
+? Expresses an interest in bodies that are average
+* Curvy
+? Expresses an interest in bodies that are curvy or voluptuous
+* Small breasts
+? Expresses an interest in small breasts
+* Medium breasts
+? Expresses an interest in medium breasts
+* Large breasts
+? Expresses an interest in large breasts
+* Small cocks
+? Expresses an interest in cocks that are below average size
+* Average cocks
+? Expresses an interest in cocks that are an average size
+* Large cocks
+? Expresses an interest in cocks that are above average size
 
 #General
 (Giving, Receiving)
@@ -28,6 +54,10 @@
 ? The act of speaking in a typically explicit manner to provoke sexual stimulation from a participant.
 * Edging
 ? Stopping at or keeping at the edge of climax without an orgasm.
+* Vaginal Sex
+? Traditional penetrative intercourse involving the vagina.
+* Creampie
+? Orgasming inside a partner without protection.
 
 #Clothing
 (Self, Partner)
@@ -51,6 +81,23 @@
 ? An object shaped like an erect penis used for sexual stimulation.
 * Vibrators
 ? A vibrating device used for sexual stimulation.
+* Plugs
+? A sex toy designed to be inserted into the rectum.
+* Anal beads
+? A string of beads used for anal stimulation.
+
+#Positions
+(General)
+* Missionary
+? Traditional face-to-face position.
+* Doggy Style
+? Penetration from behind position.
+* Cowgirl / Reverse Cowgirl
+? Partner on top, facing toward or away.
+* Spooning
+? Side-by-side intimate position.
+* Standing
+? Sexual activity while standing.
 
 #Domination
 (As Dominant, As Submissive)
@@ -78,12 +125,50 @@
 (Giving, Receiving)
 * Vanilla Sex
 ? Sex which does not involve such elements as BDSM, kink, or fetish activities.
+* Rough Sex
+? More intense and energetic sexual activity.
+* Slow/Sensual Sex
+? Gentle, romantic sexual activity.
+* Multiple Orgasms
+? Experiencing more than one orgasm in a session.
+* Simultaneous Orgasm
+? Partners climaxing at the same time.
 * Impregnation
 ? Impregnating a character.
 * Pregnancy
 ? Fetishizing a pregnant character.
 * Breast/Nipple worship
 ? Gratuitous acknowledgment of one's partner's breasts or nipples, either verbal and/or physical.
+* Ass worship
+? Gratuitous acknowledgment of one's partner's buttocks.
+* Body worship
+? General appreciation and attention to partner's body.
+
+#Settings
+(General)
+* Bedroom
+? Traditional bedroom setting.
+* Shower/Bath
+? Intimate activities in bathroom.
+* Public Place
+? Sexual activity in semi-public locations.
+* Car
+? Intimate encounters in a vehicle.
+* Outdoors
+? Sexual activity in nature or outside.
+
+#Fantasy Roles
+(General)
+* Strangers
+? Roleplay as people meeting for the first time.
+* Friends to Lovers
+? Existing friendship developing romantically.
+* Forbidden Romance
+? Relationships that are taboo or forbidden.
+* Boss/Employee
+? Power dynamic workplace scenario.
+* Teacher/Student
+? Educational setting power dynamic.
 
 #Meta
 (Self, Partner)
