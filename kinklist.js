@@ -335,40 +335,108 @@ $(function(){
             return input;
         },
         drawLegend: function(context){
-            context.font = "bold 13px Arial";
+            // Adjust font size based on available CSS width so long labels have more room
+            var fontSize = 13;
+            if (cssWidth <= 500) fontSize = 11;
+            else if (cssWidth <= 900) fontSize = 12;
+            context.font = 'bold ' + fontSize + 'px Arial';
             context.fillStyle = '#e6e6e6';
 
             var levels = Object.keys(colors);
             // compute CSS width by dividing physical px width by scale
             var scale = 1;
+            var cssWidth = 0;
             try {
-                var cssWidth = 0;
                 if (context && context.canvas) {
                     if (typeof $(context.canvas).width === 'function') {
-                        cssWidth = $(context.canvas).width();
-                        scale = context.canvas.width / cssWidth;
+                        cssWidth = $(context.canvas).width() || 0;
                     }
-                    else {
-                        // fallback if jQuery isn't available
-                        scale = (typeof inputKinks.exportScale === 'number') ? inputKinks.exportScale : 1;
+                    if (!cssWidth) {
+                        // fallback to divide canvas physical width by export scale
+                        scale = (typeof inputKinks.exportScale === 'number') ? Math.max(1, Math.floor(inputKinks.exportScale)) : 1;
                         cssWidth = Math.round(context.canvas.width / scale);
+                    } else {
+                        scale = context.canvas.width / cssWidth;
+                        if (!isFinite(scale) || scale <= 0) {
+                            scale = (typeof inputKinks.exportScale === 'number') ? Math.max(1, Math.floor(inputKinks.exportScale)) : 1;
+                            cssWidth = Math.round(context.canvas.width / scale);
+                        }
                     }
                 }
-            } catch(e) { cssWidth = context.canvas.width; scale = 1; }
+            } catch(e) { cssWidth = (context && context.canvas) ? context.canvas.width : 0; scale = 1; }
 
-            var x = cssWidth - 15 - (120 * levels.length);
-            for(var i = 0; i < levels.length; i++) {
-                context.beginPath();
-                context.arc(x + (120 * i), 17, 8, 0, 2 * Math.PI, false);
-                context.fillStyle = colors[levels[i]];
-                context.fill();
-                context.strokeStyle = 'rgba(255, 255, 255, 0.06)'
-                context.lineWidth = 1;
-                context.stroke();
+            // Layout variables
+            var circleRadius = 8;
+            var circleDiameter = circleRadius * 2;
+            var gapBetweenCircleAndText = 8;
+            var interItemSpacing = 30; // spacing between items (increased to reduce collisions)
+            var rightPadding = 22;
+            var topPadding = 17; // center Y for first row
+            var lineHeight = 26; // distance between rows
 
-                context.fillStyle = '#e6e6e6';
-                context.fillText(levels[i], x + 15 + (i * 120), 22);
+            // Build items with widths
+            var items = [];
+            var totalWidth = 0;
+            for(var i = 0; i < levels.length; i++){
+                var text = levels[i];
+                var textWidth = context.measureText(text).width || 0;
+                // Fallback if measureText failed (e.g., missing font in headless environments)
+                if (!textWidth || textWidth < 1) textWidth = text.length * 8;
+                var minItemWidth = 80; // ensure items aren't too narrow - prevents overlap when measurement is odd
+                var itemWidth = Math.max(minItemWidth, circleDiameter + gapBetweenCircleAndText + textWidth + interItemSpacing);
+                items.push({ text: text, width: itemWidth, textWidth: textWidth, color: colors[text] });
+                totalWidth += itemWidth;
             }
+
+            // Wrap into lines if necessary
+            var lines = [];
+            var curLine = { items: [], width: 0 };
+            var maxLineWidth = cssWidth - (rightPadding * 2) - 20; // leave some left padding to avoid clipping
+            for(var i = 0; i < items.length; i++){
+                var it = items[i];
+                if(curLine.items.length === 0 || curLine.width + it.width <= maxLineWidth) {
+                    curLine.items.push(it);
+                    curLine.width += it.width;
+                }
+                else {
+                    lines.push(curLine);
+                    curLine = { items: [it], width: it.width };
+                }
+            }
+            if(curLine.items.length) lines.push(curLine);
+
+            // Draw each line, right aligned
+            for(var ln = 0; ln < lines.length; ln++){
+                var line = lines[ln];
+                var xStart = cssWidth - rightPadding - line.width;
+                var baseY = topPadding + (ln * lineHeight);
+                var curX = xStart;
+                for(var k = 0; k < line.items.length; k++){
+                    var item = line.items[k];
+                    // Circle
+                    context.beginPath();
+                    context.arc(curX + circleRadius, baseY, circleRadius, 0, 2 * Math.PI, false);
+                    context.fillStyle = item.color;
+                    context.fill();
+                    context.strokeStyle = 'rgba(255, 255, 255, 0.06)'
+                    context.lineWidth = 1;
+                    context.stroke();
+
+                    // Text
+                    context.fillStyle = '#e6e6e6';
+                    context.fillText(item.text, curX + circleDiameter + gapBetweenCircleAndText, baseY + 5);
+
+                    curX += item.width;
+                }
+            }
+            try {
+                // Debugging: print legend layout in the console when exporting an image
+                if(typeof window !== 'undefined' && window && window.console && window.location && window.location.href.indexOf('#') !== -1) {
+                    // Only print when running in browser (not in tests) and when hash exists
+                    console.log('drawLegend lines', lines);
+                }
+            }
+            catch(e) {}
         },
             setupCanvas: function(width, height, username){
                 // Determine target scale for exported canvas
@@ -576,6 +644,15 @@ $(function(){
             }
 
             //return $(canvas).insertBefore($('#InputList'));
+
+            // If preview flag present, append the canvas to the document and skip upload (for debugging)
+            if (typeof window !== 'undefined' && window.kinklistPreview) {
+                $(canvas).css({ display: 'block', margin: '10px auto', border: '1px solid #333' });
+                $(canvas).insertBefore($('#InputList'));
+                $('#Loading').hide();
+                $('#URL').val('preview').fadeIn();
+                return;
+            }
 
             // Send canvas to imgur
             $.ajax({

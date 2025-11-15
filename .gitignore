@@ -7,3 +7,4 @@ package-lock.json
 package.json
 tests/test-hash.js
 test-scroll.html
+tests/test-export.js
